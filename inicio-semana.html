@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inicio de la Semana - Recurso Académico</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body{
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background:#fff;
+      color:#000;
+      line-height:1.55;
+      padding: 16px; /* ↓ más pequeño */
+    }
+
+    .container{ max-width: 980px; margin: 0 auto; } /* ↓ más pequeño */
+
+    /* ===== Toolbar superior (2 botones) ===== */
+    .toolbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:12px;
+    }
+    .toolbar .btn{
+      border:none;
+      cursor:pointer;
+      border-radius:12px;
+      padding:10px 14px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      font-weight:800;
+      background:#FAFAFA;
+      color:#791632;
+      border:1px solid #EAEAEA;
+      transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .toolbar .btn:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 10px 20px rgba(0,0,0,.08);
+      background:#fff;
+      border-color:#CDCDCC;
+    }
+    .toolbar .btn:active{ transform: translateY(0px); }
+    .toolbar .btn.primary{
+      background:#791632;
+      color:#fff;
+      border-color: rgba(255,255,255,.2);
+      box-shadow: 0 10px 20px rgba(121,22,50,.20);
+    }
+    .toolbar .btn.primary:hover{ background:#A83150; }
+    .toolbar .btn svg{ width:18px; height:18px; }
+
+    /* Header del Recurso */
+    .header-section{
+      background: linear-gradient(135deg, #791632 0%, #A83150 50%, #791632 100%);
+      border-radius: 12px;
+      padding: 22px;               /* ↓ más pequeño */
+      margin-bottom: 18px;         /* ↓ más pequeño */
+      box-shadow: 0 10px 25px rgba(121, 22, 50, 0.22);
+    }
+
+    .header-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      margin-bottom: 14px;         /* ↓ más pequeño */
+      gap:12px;
+    }
+
+    .header-main h1{
+      color:#fff;
+      font-size: 28px;             /* ↓ más pequeño */
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .header-badges{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(10px);
+      border-radius: 999px;
+      padding: 7px 12px;           /* ↓ más pequeño */
+    }
+
+    .badge svg{ width:18px; height:18px; color:#fff; }
+    .badge span{ color:#fff; font-weight:700; font-size: 13px; }
+
+    .badge-yellow{
+      background:#FAC049;
+    }
+    .badge-yellow span{
+      color:#791632;
+      font-weight:900;
+      font-size: 12px;
+    }
+
+    .tipo-badge{
+      background: rgba(255,255,255,0.20);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 10px 14px;          /* ↓ más pequeño */
+      border: 1px solid rgba(255,255,255,0.30);
+      min-width: 190px;
+      text-align:center;
+    }
+    .tipo-badge div{
+      color:#fff;
+      font-weight:900;
+      font-size: 14px;             /* ↓ más pequeño */
+    }
+
+    .duracion-box{
+      background: rgba(255,255,255,0.10);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.20);
+      border-radius: 12px;
+      padding: 14px;               /* ↓ más pequeño */
+    }
+
+    .duracion-box label{
+      color: rgba(255,255,255,0.75);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      margin-bottom: 10px;
+      font-weight: 800;
+    }
+
+    .duracion-dates{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .duracion-dates input{
+      flex:1;
+      background: rgba(255,255,255,0.10);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.20);
+      border-radius: 10px;
+      padding: 10px 12px;
+      color:#fff;
+      font-weight:800;
+      outline:none;
+    }
+
+    .duracion-separator{
+      display:flex;
+      gap:6px;
+      padding: 0 8px;
+    }
+
+    .duracion-separator .dot{
+      width:7px; height:7px; border-radius:50%;
+      background: rgba(255,255,255,0.55);
+    }
+
+    /* Ruta de Aprendizaje */
+    .ruta-section{
+      background:#EAEAEA;
+      border-radius:12px;
+      padding: 20px;               /* ↓ más pequeño */
+      margin-bottom: 18px;         /* ↓ más pequeño */
+    }
+
+    .ruta-section h3{
+      color:#791632;
+      font-weight:900;
+      margin-bottom:4px;
+      font-size: 15px;
+    }
+
+    .ruta-section > p{
+      color:#777878;
+      font-size: 12px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    .ruta-container{ position:relative; }
+
+    .ruta-line{
+      position:absolute;
+      top: 26px;
+      left:0; right:0;
+      display:flex;
+      align-items:center;
+      padding: 0 24px;
+    }
+
+    .ruta-line > div{ flex:1; height:2px; background:#CDCDCC; }
+
+    .ruta-steps{
+      position:relative;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 6px;
+    }
+
+    .step{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      flex:1;
+      min-width: 84px;
+    }
+
+    .step-icon{
+      width: 52px;                 /* ↓ más pequeño */
+      height: 52px;                /* ↓ más pequeño */
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom: 10px;
+      position:relative;
+      z-index:10;
+      transition: all .25s ease;
+    }
+
+    .step-icon.active{
+      background:#791632;
+      box-shadow: 0 4px 15px rgba(121,22,50,.25);
+      animation: heartbeat 1.5s ease-in-out infinite;
+    }
+
+    .step-icon.inactive{
+      background:#fff;
+      border:2px solid #CDCDCC;
+    }
+
+    .step-icon svg{ width: 22px; height: 22px; }
+    .step-icon.active svg{ color:#fff; }
+    .step-icon.inactive svg{ color:#777878; }
+
+    .step p{
+      font-size: 11px;
+      text-align:center;
+      line-height:1.2;
+      max-width: 92px;
+    }
+
+    .step.active p{ color:#791632; font-weight:900; }
+    .step.inactive p{ color:#777878; font-weight:700; }
+
+    @keyframes heartbeat{
+      0%,100%{ transform: scale(1); }
+      50%{ transform: scale(1.05); }
+    }
+
+    /* Contenido en columnas */
+    .content-grid{
+      display:grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 16px;                   /* ↓ más pequeño */
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 1024px){
+      .content-grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      background:#fff;
+      border: 1px solid #CDCDCC;
+      border-radius: 12px;
+      padding: 18px;               /* ↓ más pequeño */
+    }
+
+    .card-header{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .card-icon{
+      width: 30px; height: 30px;
+      border-radius: 10px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .card-icon.burgundy{ background:#791632; }
+    .card-icon.pink{ background:#B23858; }
+    .card-icon svg{ width:18px; height:18px; color:#fff; }
+
+    .card h3{ color:#791632; font-weight:900; font-size: 15px; }
+    .card p, .card li{ color:#000; line-height: 1.65; font-size: 13px; }
+
+    .card.dark{
+      background:#791632;
+      color:#fff;
+      border-color: rgba(255,255,255,.18);
+    }
+    .card.dark h3{ color:#fff; }
+    .card.dark .card-icon{ background: rgba(255,255,255,.18); }
+    .card.dark p, .card.dark li{ color:#fff; }
+
+    .card ul{ list-style:none; padding:0; }
+    .card ul li{ display:flex; gap:8px; margin-bottom: 8px; font-size: 13px; }
+    .card ul li span:first-child{ color: rgba(255,255,255,.78); }
+
+    .sidebar{ display:flex; flex-direction:column; gap: 16px; } /* ↓ más pequeño */
+
+    .footer-bar{
+      height: 7px;
+      background: linear-gradient(90deg, #791632 0%, #A83150 50%, #B23858 100%);
+      border-radius: 999px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px){
+      body{ padding: 12px; }
+      .header-top{ flex-direction:column; }
+      .tipo-badge{ width:100%; min-width: unset; }
+      .duracion-dates{ flex-direction:column; }
+      .ruta-steps{ flex-wrap:wrap; justify-content:center; }
+      .ruta-line{ display:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- Toolbar superior (NO se copia al exportar) -->
+    <div class="toolbar" id="app-toolbar" data-noexport="true">
+      <button class="btn" type="button" onclick="volverAlInicio()">
+        <!-- Icono flecha izquierda -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m15 18-6-6 6-6"></path>
+        </svg>
+        Volver al inicio
+      </button>
+
+      <button class="btn primary" type="button" onclick="copiarHTML()">
+        <!-- Icono copiar -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+        Copiar código HTML
+      </button>
+    </div>
+
+    <!-- Header del Recurso -->
+    <div class="header-section">
+      <div class="header-top">
+        <div class="header-main" style="flex:1;">
+          <h1 contenteditable="true">Nombre de la materia</h1>
+
+          <div class="header-badges">
+            <div class="badge">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+              </svg>
+              <span contenteditable="true">Semana 1</span>
+            </div>
+
+            <div class="badge badge-yellow">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#791632" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span contenteditable="true">15 min</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tipo-badge">
+          <div>Inicio de la semana</div>
+        </div>
+      </div>
+
+      <div class="duracion-box">
+        <label>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          Duración
+        </label>
+
+        <div class="duracion-dates">
+          <input type="date" value="2024-01-15" />
+          <div class="duracion-separator">
+            <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+          </div>
+          <input type="date" value="2024-01-21" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Ruta de Aprendizaje -->
+    <div class="ruta-section">
+      <h3>Ruta de Aprendizaje</h3>
+      <p>Progreso del módulo actual</p>
+
+      <div class="ruta-container">
+        <div class="ruta-line"><div></div></div>
+
+        <div class="ruta-steps">
+          <div class="step active">
+            <div class="step-icon active">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+            </div>
+            <p contenteditable="true">En curso</p>
+          </div>
+
+          <div class="step inactive">
+            <div class="step-icon inactive">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+            </div>
+            <p contenteditable="true">Guía de contenidos</p>
+          </div>
+
+          <div class="step inactive">
+            <div class="step-icon inactive">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+              </svg>
+            </div>
+            <p contenteditable="true">Video interactivo</p>
+          </div>
+
+          <div class="step inactive">
+            <div class="step-icon inactive">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </div>
+            <p contenteditable="true">Actividad</p>
+          </div>
+
+          <div class="step inactive">
+            <div class="step-icon inactive">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+                <path d="M8 7h6"></path>
+                <path d="M8 11h8"></path>
+              </svg>
+            </div>
+            <p contenteditable="true">Lecturas</p>
+          </div>
+
+          <div class="step inactive">
+            <div class="step-icon inactive">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 11l3 3L22 4"></path>
+                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+              </svg>
+            </div>
+            <p contenteditable="true">Examen</p>
+          </div>
+
+          <div class="step inactive">
+            <div class="step-icon inactive">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <p contenteditable="true">Cierre</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contenido en dos columnas -->
+    <div class="content-grid">
+      <!-- Bienvenida -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon burgundy">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+          </div>
+          <h3 contenteditable="true">¡Bienvenido(a) a la Semana 1!</h3>
+        </div>
+
+        <p contenteditable="true" style="min-height: 110px;">
+          La bienvenida semanal es un espacio introductorio que permite situar al estudiante en los contenidos y propósitos de la semana. Su finalidad es contextualizar el aprendizaje, generar interés y orientar el trabajo que se desarrollará.<br><br>
+
+          <strong>Al redactarla, se sugiere:</strong><br>
+          • Hacer referencia al tema o eje central de la semana<br>
+          • Vincular el contenido con la asignatura y, de ser pertinente, con lo trabajado previamente<br>
+          • Utilizar un lenguaje claro y cercano, acorde al nivel académico<br>
+          • Señalar de manera general qué se espera que el estudiante logre al finalizar la semana<br>
+          • Invitar a la participación activa y al compromiso con las actividades propuestas<br><br>
+
+          La redacción es flexible y responde al estilo del docente, manteniendo siempre su función orientadora dentro de la guía.
+        </p>
+      </div>
+
+      <!-- Columna derecha -->
+      <div class="sidebar">
+        <!-- Objetivos -->
+        <div class="card dark">
+          <div class="card-header">
+            <div class="card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <h3 contenteditable="true">Objetivos</h3>
+          </div>
+
+          <ul contenteditable="true">
+            <li><span>✓</span><span>Colocar 3 objetivos que se deben alcanzar esta semana</span></li>
+            <li><span>✓</span><span>Deben ser medibles y alcanzables</span></li>
+            <li><span>✓</span><span>Deben tener verbo de acción</span></li>
+          </ul>
+        </div>
+
+        <!-- Temas de la semana -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon pink">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+                <path d="M8 7h6"></path>
+                <path d="M8 11h8"></path>
+              </svg>
+            </div>
+            <h3 contenteditable="true" style="color:#B23858;">Temas</h3>
+          </div>
+
+          <p contenteditable="true" style="font-size: 13px;">
+            • Colocar los temas que se tratarán esta semana<br>
+            • Los temas deben ser los mismos del syllabus<br>
+            •
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer decorativo -->
+    <div class="footer-bar"></div>
+  </div>
+
+  <script>
+    function volverAlInicio() {
+      const msg = "recuerda que el contenido NO se guarda cuando sales, asegurate de que si terminaste, copiaste el codigo html y lo incertaste en un word";
+      const ok = window.confirm(msg);
+      if (ok) window.location.href = "/";
+    }
+
+    function buildExportHTML() {
+      // Clonamos el documento para exportar SIN toolbar y SIN edición
+      const clone = document.documentElement.cloneNode(true);
+
+      // 1) Quitar la toolbar (todo elemento marcado con data-noexport="true")
+      clone.querySelectorAll('[data-noexport="true"]').forEach(el => el.remove());
+
+      // 2) Quitar "contenteditable" para que sea texto plano
+      clone.querySelectorAll('[contenteditable]').forEach(el => {
+        el.removeAttribute('contenteditable');
+      });
+
+      // 3) Hacer que los inputs de fecha queden solo lectura (si quieres)
+      clone.querySelectorAll('input[type="date"]').forEach(inp => {
+        inp.setAttribute('readonly', 'readonly');
+      });
+
+      // 4) (Opcional) Quitar cualquier script del export (para Word suele ser mejor)
+      clone.querySelectorAll('script').forEach(s => s.remove());
+
+      const doctype = '<!DOCTYPE html>';
+      return doctype + '\n' + clone.outerHTML;
+    }
+
+    async function copiarHTML() {
+      const html = buildExportHTML();
+      try {
+        await navigator.clipboard.writeText(html);
+        alert("Código HTML copiado. Pégalo en Word.");
+      } catch (e) {
+        // Fallback
+        const ta = document.createElement('textarea');
+        ta.value = html;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        alert("Código HTML copiado. Pégalo en Word.");
+      }
+    }
+  </script>
+</body>
+</html>

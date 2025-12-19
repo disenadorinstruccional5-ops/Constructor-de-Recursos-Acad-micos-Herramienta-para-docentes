@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lecturas complementarias y obligatorias</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body{
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background:#fff; color:#000; line-height:1.6;
+      padding: 22px;
+    }
+
+    :root{
+      --vino:#791632;
+      --vino2:#A83150;
+      --rosa:#B23858;
+      --amarillo:#FAC049;
+      --gris:#EAEAEA;
+      --borde:#CDCDCC;
+      --texto-gris:#777878;
+      --card:#ffffff;
+      --shadow: 0 12px 28px rgba(0,0,0,.10);
+    }
+
+    .container{ max-width: 1200px; margin: 0 auto; }
+
+    /* ====== BOTONES SUPERIORES (MISMO ESTILO) ====== */
+    .top-actions{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-weight: 700;
+      cursor:pointer;
+      border: 1px solid #e6e6e6;
+      background:#fff;
+      color:#000;
+      box-shadow: 0 10px 20px rgba(0,0,0,.06);
+      transition: transform .15s ease, box-shadow .15s ease;
+      user-select:none;
+    }
+    .btn:hover{ transform: translateY(-1px); box-shadow: 0 14px 24px rgba(0,0,0,.09); }
+    .btn svg{ width:18px; height:18px; }
+
+    .btn.primary{
+      background: var(--vino);
+      color:#fff;
+      border:none;
+    }
+    .btn.primary svg{ stroke:#fff; }
+
+    /* ====== HEADER/BANNER (MISMO DISEÑO ANTERIOR) ====== */
+    .header-section{
+      background: linear-gradient(135deg, var(--vino) 0%, var(--vino2) 50%, var(--vino) 100%);
+      border-radius: 16px;
+      padding: 26px;
+      box-shadow: 0 10px 25px rgba(121,22,50,.30);
+      margin-bottom: 18px;
+    }
+    .header-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+    .header-main h1{
+      color:#fff;
+      font-size: 34px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      outline:none;
+    }
+
+    .header-badges{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.25);
+      backdrop-filter: blur(10px);
+      border-radius: 999px;
+      padding: 8px 14px;
+    }
+    .badge svg{ width:18px; height:18px; stroke:#fff; }
+    .badge span{ color:#fff; font-weight:700; }
+
+    .badge-yellow{
+      background: var(--amarillo);
+      border:none;
+    }
+    .badge-yellow svg{ stroke: var(--vino); }
+    .badge-yellow span{ color: var(--vino); }
+
+    .tipo-badge{
+      background: rgba(255,255,255,.16);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 12px;
+      padding: 10px 16px;
+      color:#fff;
+      font-weight: 800;
+      align-self:flex-start;
+      white-space: nowrap;
+    }
+
+    .duracion-box{
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .duracion-box label{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      color: rgba(255,255,255,.8);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .duracion-box label svg{ width:16px; height:16px; stroke:#fff; opacity:.9; }
+    .duracion-dates{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+    }
+    .duracion-dates input{
+      flex:1;
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.26);
+      border-radius: 10px;
+      padding: 10px 12px;
+      color:#fff;
+      font-weight:700;
+      outline:none;
+    }
+    .duracion-separator{
+      display:flex; align-items:center; gap: 8px; padding: 0 6px;
+    }
+    .dot{
+      width:7px; height:7px; border-radius:50%;
+      background: rgba(255,255,255,.55);
+    }
+
+    /* ====== RUTA (MANTENER ESTILO) ====== */
+    .ruta-section{
+      background: var(--gris);
+      border-radius: 16px;
+      padding: 22px;
+      margin-bottom: 18px;
+    }
+    .ruta-section h3{ color: var(--vino); font-weight: 900; margin-bottom: 2px; }
+    .ruta-section > p{ color: var(--texto-gris); font-size: 14px; margin-bottom: 18px; }
+
+    .ruta-steps{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 6px;
+      position: relative;
+      padding-top: 8px;
+    }
+    .ruta-steps::before{
+      content:"";
+      position:absolute;
+      top: 34px;
+      left: 24px;
+      right: 24px;
+      height: 2px;
+      background: var(--borde);
+      z-index: 1;
+    }
+    .step{
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      position:relative;
+      z-index: 2;
+      min-width: 70px;
+    }
+    .step-icon{
+      width: 58px; height: 58px;
+      border-radius: 999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#fff;
+      border: 2px solid var(--borde);
+    }
+    .step-icon svg{ width:26px; height:26px; stroke: var(--texto-gris); }
+    .step p{
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--texto-gris);
+      text-align:center;
+      max-width: 86px;
+      line-height: 1.25;
+    }
+    .step.active .step-icon{
+      background: var(--vino);
+      border-color: var(--vino);
+      box-shadow: 0 6px 16px rgba(121,22,50,.28);
+    }
+    .step.active .step-icon svg{ stroke:#fff; }
+    .step.active p{ color: var(--vino); font-weight: 900; }
+
+    /* ====== LAYOUT PRINCIPAL (IGUAL A LOS OTROS) ====== */
+    .content-grid{
+      display:grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 22px;
+      margin-bottom: 18px;
+    }
+
+    .card{
+      background: var(--card);
+      border: 1px solid var(--borde);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .section-title{
+      color: var(--vino);
+      font-weight: 900;
+      font-size: 20px;
+      margin: 0 0 6px;
+    }
+
+    .static-text{
+      color: var(--texto-gris);
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    /* Recomendación (ESTÁTICA y ARRIBA) */
+    .reco{
+      background: #FAFAFA;
+      border: 1px solid #e9e9e9;
+      border-radius: 12px;
+      padding: 12px 14px;
+      display:flex;
+      gap: 12px;
+      align-items:flex-start;
+      margin-bottom: 14px;
+    }
+    .reco-bar{
+      width: 4px;
+      border-radius: 999px;
+      background: var(--vino);
+      flex-shrink:0;
+      margin-top: 2px;
+      height: 100%;
+      min-height: 34px;
+    }
+    .reco p{
+      font-size: 13px;
+      color:#000;
+    }
+    .reco strong{ font-weight: 900; }
+
+    /* ====== REFERENCIAS (UNA LÍNEA, MÁS PEQUEÑAS) ====== */
+    .refs-block{ margin-top: 6px; }
+    .refs-list{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+
+    .ref-row{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+    }
+
+    .ref-input{
+      flex:1;
+      border: 1px solid #e7e7e7;
+      border-radius: 12px;
+      padding: 10px 12px;      /* más pequeño */
+      min-height: 40px;        /* una sola línea */
+      outline:none;
+      position:relative;
+      background:#fff;
+    }
+
+    /* barrita roja más pequeña */
+    .ref-input::before{
+      content:"";
+      position:absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 16px;
+      border-radius: 999px;
+      background: var(--vino);
+    }
+    .ref-input > span{
+      display:block;
+      padding-left: 16px;
+      font-size: 13px;
+      color:#000;
+      outline:none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .ref-input > span:empty::before{
+      content: attr(data-ph);
+      color:#9b9b9b;
+    }
+
+    .remove-btn{
+      display:none; /* solo desde la 4ta */
+      border: 1px solid #eee;
+      background:#fff;
+      border-radius: 10px;
+      padding: 10px 12px;
+      cursor:pointer;
+    }
+    .remove-btn svg{ width:18px; height:18px; stroke:#000; opacity:.75; }
+    .remove-btn:hover svg{ opacity:1; }
+
+    /* ====== SIDEBAR OBJETIVOS (MÁS PEQUEÑO) ====== */
+    .sidebar{ display:flex; flex-direction:column; gap: 14px; }
+
+    .obj-card{
+      background: var(--vino);
+      color:#fff;
+      border-radius: 16px;
+      padding: 16px;
+      height: fit-content;         /* clave para que no ocupe toda la altura */
+      align-self: flex-start;      /* no estirar */
+    }
+
+    .obj-header{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .obj-icon{
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.18);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      animation: heartbeat 1.4s ease-in-out infinite;
+    }
+    .obj-icon svg{ width:20px; height:20px; stroke:#fff; }
+
+    @keyframes heartbeat{
+      0%,100%{ transform: scale(1); }
+      50%{ transform: scale(1.06); }
+    }
+
+    .obj-title{
+      font-weight: 900;
+      font-size: 16px;
+    }
+
+    .obj-box{
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 12px;
+      padding: 12px;
+    }
+    .obj-box ul{ margin-left: 18px; }
+    .obj-box li{
+      margin: 6px 0;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* ====== FOOTER BAR ====== */
+    .footer-bar{
+      height: 8px;
+      background: linear-gradient(90deg, var(--vino) 0%, var(--vino2) 50%, var(--rosa) 100%);
+      border-radius: 999px;
+      margin-top: 18px;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .content-grid{ grid-template-columns: 1fr; }
+      .header-top{ flex-direction: column; }
+      .tipo-badge{ align-self:flex-start; }
+    }
+    @media (max-width: 768px){
+      body{ padding: 16px; }
+      .top-actions{ padding:0; }
+      .duracion-dates{ flex-direction: column; align-items:stretch; }
+      .ruta-steps{ flex-wrap: wrap; }
+      .ruta-steps::before{ display:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- BOTONES SUPERIORES -->
+    <div class="top-actions">
+      <button class="btn" id="btnBack" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 18l-6-6 6-6"/>
+        </svg>
+        Volver al inicio
+      </button>
+
+      <button class="btn primary" id="btnCopy" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+        Copiar código HTML
+      </button>
+    </div>
+
+    <!-- BANNER -->
+    <div class="header-section">
+      <div class="header-top">
+        <div class="header-main">
+          <h1 contenteditable="true">Nombre de la materia</h1>
+
+          <div class="header-badges">
+            <div class="badge">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>
+              </svg>
+              <span contenteditable="true">Semana 1</span>
+            </div>
+
+            <div class="badge badge-yellow">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#791632" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span contenteditable="true">15 min</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tipo-badge">Lecturas complementarias y obligatorias</div>
+      </div>
+
+      <div class="duracion-box">
+        <label>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          Duración
+        </label>
+
+        <div class="duracion-dates">
+          <input type="date" value="2024-01-15" />
+          <div class="duracion-separator">
+            <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+          </div>
+          <input type="date" value="2024-01-21" />
+        </div>
+      </div>
+    </div>
+
+    <!-- RUTA (solo ejemplo: marcamos Lecturas activo para este recurso) -->
+    <div class="ruta-section">
+      <h3>Ruta de Aprendizaje</h3>
+      <p>Progreso del módulo actual</p>
+
+      <div class="ruta-steps">
+        <div class="step">
+          <div class="step-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+          </div>
+          <p>En curso</p>
+        </div>
+
+        <div class="step">
+          <div class="step-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+          </div>
+          <p>Guía de contenidos</p>
+        </div>
+
+        <div class="step">
+          <div class="step-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="23 7 16 12 23 17 23 7"></polygon>
+              <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+            </svg>
+          </div>
+          <p>Video interactivo</p>
+        </div>
+
+        <div class="step">
+          <div class="step-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+            </svg>
+          </div>
+          <p>Actividad</p>
+        </div>
+
+        <div class="step active">
+          <div class="step-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+              <path d="M8 7h6"></path>
+              <path d="M8 11h8"></path>
+            </svg>
+          </div>
+          <p>Lecturas</p>
+        </div>
+
+        <div class="step">
+          <div class="step-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 11l3 3L22 4"></path>
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+            </svg>
+          </div>
+          <p>Examen</p>
+        </div>
+
+        <div class="step">
+          <div class="step-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <p>Cierre</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENIDO -->
+    <div class="content-grid">
+
+      <!-- IZQUIERDA -->
+      <div class="card">
+        <!-- RECOMENDACIÓN (ESTÁTICA, ARRIBA) -->
+        <div class="reco" aria-label="Recomendación de estudio (estático)">
+          <div class="reco-bar"></div>
+          <p>
+            <strong>Recomendación de estudio:</strong>
+            identifique el concepto central, los aportes y la utilidad práctica de cada fuente.
+            Registre al menos dos ideas clave por lectura.
+          </p>
+        </div>
+
+        <!-- LECTURAS COMPLEMENTARIAS (ESTÁTICO) -->
+        <div class="section-title">Lecturas complementarias</div>
+        <div class="static-text">
+          Definición: son recursos adicionales que amplían, contextualizan o profundizan los contenidos de la semana.
+        </div>
+
+        <!-- BIBLIOGRAFÍA COMPLEMENTARIA (TÍTULO + LEYENDA ESTÁTICOS) -->
+        <div class="section-title" style="margin-top:10px;">Bibliografía complementaria</div>
+        <div class="static-text">
+          Aquí debe ir la referencia que el estudiante deba revisar, la cual debe estar en norma APA 7ma edición.
+        </div>
+
+        <div class="refs-block" id="refsComplementaria" data-min="3" data-ph="Aquí debe ir la referencia en norma APA 7ma edición...">
+          <div class="refs-list"></div>
+        </div>
+
+        <!-- LECTURAS OBLIGATORIAS (ESTÁTICO) -->
+        <div class="section-title" style="margin-top:22px;">Lecturas obligatorias</div>
+
+        <!-- BIBLIOGRAFÍA BÁSICA (TÍTULO + LEYENDA ESTÁTICOS) -->
+        <div class="section-title" style="margin-top:8px;">Bibliografía básica</div>
+        <div class="static-text">
+          Aquí debe ir la referencia obligatoria que el estudiante debe revisar, en norma APA 7ma edición.
+        </div>
+
+        <div class="refs-block" id="refsBasica" data-min="3" data-ph="Aquí debe ir la referencia obligatoria en norma APA 7ma edición...">
+          <div class="refs-list"></div>
+        </div>
+      </div>
+
+      <!-- DERECHA (OBJETIVOS PEQUEÑO) -->
+      <div class="sidebar">
+        <div class="obj-card">
+          <div class="obj-header">
+            <div class="obj-icon" title="Icono parpadea">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+              </svg>
+            </div>
+            <div class="obj-title">Objetivos de lectura</div>
+          </div>
+
+          <!-- Solo esto es editable -->
+          <div class="obj-box">
+            <ul contenteditable="true">
+              <li>Escriba aquí 3 objetivos de lectura.</li>
+              <li>Use verbos de acción.</li>
+              <li>Mantenga enunciados claros y medibles.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bar"></div>
+  </div>
+
+  <script>
+    // ====== Volver al inicio: alerta + redirección (si quieres cambiar la URL, edita aquí) ======
+    document.getElementById("btnBack").addEventListener("click", () => {
+      const ok = confirm('Recuerda que el contenido NO se guarda cuando sales.\nAsegúrate de que si terminaste, copiaste el código HTML y lo insertaste en un Word.\n\n¿Deseas volver al inicio?');
+      if(ok){
+        // Ajusta esta ruta a tu home real:
+        window.location.href = "/"; 
+      }
+    });
+
+    // ====== Copiar HTML completo ======
+    document.getElementById("btnCopy").addEventListener("click", async () => {
+      try{
+        const html = "<!DOCTYPE html>\\n" + document.documentElement.outerHTML;
+        await navigator.clipboard.writeText(html);
+        alert("Código HTML copiado correctamente.");
+      }catch(e){
+        alert("No se pudo copiar. Intenta nuevamente.");
+      }
+    });
+
+    // ====== Referencias dinámicas: mínimo 3, Enter crea otra, desde 4 se puede borrar ======
+    function createRefRow(placeholder){
+      const row = document.createElement("div");
+      row.className = "ref-row";
+
+      const box = document.createElement("div");
+      box.className = "ref-input";
+
+      const span = document.createElement("span");
+      span.contentEditable = "true";
+      span.setAttribute("data-ph", placeholder);
+      span.addEventListener("keydown", (e) => {
+        if(e.key === "Enter"){
+          e.preventDefault();
+          const list = row.parentElement;
+          const block = list.closest(".refs-block");
+          addRef(list, block);
+        }else if(e.key === "Backspace"){
+          // si está vacío y es extra, permitir borrar con backspace (opcional)
+        }
+      });
+
+      box.appendChild(span);
+
+      const del = document.createElement("button");
+      del.type = "button";
+      del.className = "remove-btn";
+      del.title = "Eliminar";
+      del.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 6h18"></path>
+          <path d="M8 6V4h8v2"></path>
+          <path d="M19 6l-1 14H6L5 6"></path>
+        </svg>
+      `;
+
+      del.addEventListener("click", () => {
+        const list = row.parentElement;
+        const block = list.closest(".refs-block");
+        const min = Number(block.dataset.min || 3);
+        if(list.querySelectorAll(".ref-row").length > min){
+          row.remove();
+          refreshDeleteButtons(list, block);
+        }
+      });
+
+      row.appendChild(box);
+      row.appendChild(del);
+      return row;
+    }
+
+    function refreshDeleteButtons(list, block){
+      const rows = list.querySelectorAll(".ref-row");
+      const min = Number(block.dataset.min || 3);
+      rows.forEach((r, idx) => {
+        const btn = r.querySelector(".remove-btn");
+        if(!btn) return;
+        // mostrar solo si hay más del mínimo y esta fila está por encima del mínimo (desde la 4ta en adelante)
+        if(rows.length > min && idx >= min){
+          btn.style.display = "inline-flex";
+        }else{
+          btn.style.display = "none";
+        }
+      });
+    }
+
+    function addRef(list, block){
+      const ph = block.dataset.ph || "Referencia...";
+      const row = createRefRow(ph);
+      list.appendChild(row);
+      refreshDeleteButtons(list, block);
+      // focus en el nuevo
+      row.querySelector("span").focus();
+    }
+
+    function initRefs(blockId){
+      const block = document.getElementById(blockId);
+      const list = block.querySelector(".refs-list");
+      const min = Number(block.dataset.min || 3);
+
+      // crear mínimo 3
+      for(let i=0;i<min;i++){
+        list.appendChild(createRefRow(block.dataset.ph || "Referencia..."));
+      }
+      refreshDeleteButtons(list, block);
+    }
+
+    initRefs("refsComplementaria");
+    initRefs("refsBasica");
+  </script>
+</body>
+</html>

@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guía de Contenido - Recurso Académico</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body{
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background:#fff;
+      color:#000;
+      line-height:1.55;
+      padding: 16px;
+    }
+
+    .container{ max-width: 980px; margin: 0 auto; }
+
+    /* ===== Toolbar superior (2 botones) ===== */
+    .toolbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:12px;
+    }
+    .toolbar .btn{
+      border:none;
+      cursor:pointer;
+      border-radius:12px;
+      padding:10px 14px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      font-weight:800;
+      background:#FAFAFA;
+      color:#791632;
+      border:1px solid #EAEAEA;
+      transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .toolbar .btn:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 10px 20px rgba(0,0,0,.08);
+      background:#fff;
+      border-color:#CDCDCC;
+    }
+    .toolbar .btn:active{ transform: translateY(0px); }
+    .toolbar .btn.primary{
+      background:#791632;
+      color:#fff;
+      border-color: rgba(255,255,255,.2);
+      box-shadow: 0 10px 20px rgba(121,22,50,.20);
+    }
+    .toolbar .btn.primary:hover{ background:#A83150; }
+    .toolbar .btn svg{ width:18px; height:18px; }
+
+    /* Header del Recurso */
+    .header-section{
+      background: linear-gradient(135deg, #791632 0%, #A83150 50%, #791632 100%);
+      border-radius: 12px;
+      padding: 22px;
+      margin-bottom: 18px;
+      box-shadow: 0 10px 25px rgba(121, 22, 50, 0.22);
+    }
+
+    .header-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      margin-bottom: 14px;
+      gap:12px;
+    }
+
+    .header-main h1{
+      color:#fff;
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .header-badges{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(10px);
+      border-radius: 999px;
+      padding: 7px 12px;
+    }
+
+    .badge svg{ width:18px; height:18px; color:#fff; }
+    .badge span{ color:#fff; font-weight:700; font-size: 13px; }
+
+    .badge-yellow{ background:#FAC049; }
+    .badge-yellow span{
+      color:#791632;
+      font-weight:900;
+      font-size: 12px;
+    }
+
+    .tipo-badge{
+      background: rgba(255,255,255,0.20);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 10px 14px;
+      border: 1px solid rgba(255,255,255,0.30);
+      min-width: 190px;
+      text-align:center;
+    }
+    .tipo-badge div{
+      color:#fff;
+      font-weight:900;
+      font-size: 14px;
+    }
+
+    .duracion-box{
+      background: rgba(255,255,255,0.10);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.20);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .duracion-box label{
+      color: rgba(255,255,255,0.75);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      margin-bottom: 10px;
+      font-weight: 800;
+    }
+
+    .duracion-dates{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .duracion-dates input{
+      flex:1;
+      background: rgba(255,255,255,0.10);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.20);
+      border-radius: 10px;
+      padding: 10px 12px;
+      color:#fff;
+      font-weight:800;
+      outline:none;
+    }
+
+    .duracion-separator{
+      display:flex;
+      gap:6px;
+      padding: 0 8px;
+    }
+
+    .duracion-separator .dot{
+      width:7px; height:7px; border-radius:50%;
+      background: rgba(255,255,255,0.55);
+    }
+
+    /* Ruta de Aprendizaje */
+    .ruta-section{
+      background:#EAEAEA;
+      border-radius:12px;
+      padding: 20px;
+      margin-bottom: 18px;
+    }
+
+    .ruta-section h3{
+      color:#791632;
+      font-weight:900;
+      margin-bottom:4px;
+      font-size: 15px;
+    }
+
+    .ruta-section > p{
+      color:#777878;
+      font-size: 12px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    .ruta-container{ position:relative; }
+
+    .ruta-line{
+      position:absolute;
+      top: 26px;
+      left:0; right:0;
+      display:flex;
+      align-items:center;
+      padding: 0 24px;
+    }
+
+    .ruta-line > div{ flex:1; height:2px; background:#CDCDCC; }
+
+    .ruta-steps{
+      position:relative;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 6px;
+    }
+
+    .step{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      flex:1;
+      min-width: 84px;
+    }
+
+    .step-icon{
+      width: 52px;
+      height: 52px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom: 10px;
+      position:relative;
+      z-index:10;
+      transition: all .25s ease;
+    }
+
+    .step-icon.active{
+      background:#791632;
+      box-shadow: 0 4px 15px rgba(121,22,50,.25);
+      animation: heartbeat 1.5s ease-in-out infinite;
+    }
+
+    .step-icon.inactive{
+      background:#fff;
+      border:2px solid #CDCDCC;
+    }
+
+    .step-icon svg{ width: 22px; height: 22px; }
+    .step-icon.active svg{ color:#fff; }
+    .step-icon.inactive svg{ color:#777878; }
+
+    .step p{
+      font-size: 11px;
+      text-align:center;
+      line-height:1.2;
+      max-width: 92px;
+    }
+
+    .step.active p{ color:#791632; font-weight:900; }
+    .step.inactive p{ color:#777878; font-weight:700; }
+
+    @keyframes heartbeat{
+      0%,100%{ transform: scale(1); }
+      50%{ transform: scale(1.05); }
+    }
+
+    /* ===== Tabs PADRE (full width) ===== */
+    .tabs-wrap{
+      background:#fff;
+      border:1px solid #EAEAEA;
+      border-radius:12px;
+      padding: 10px;
+      margin-bottom: 16px;
+      box-shadow: 0 10px 20px rgba(0,0,0,.04);
+    }
+
+    .tabs-row{
+      display:grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap:10px;
+      align-items:stretch;
+      width:100%;
+    }
+
+    .tab{
+      width:100%;
+      border:1px solid #EAEAEA;
+      background:#fff;
+      color:#791632;
+      font-weight:900;
+      font-size: 12px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      cursor:pointer;
+      user-select:none;
+      transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      min-height: 38px;
+    }
+    .tab:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 10px 20px rgba(0,0,0,.06);
+      border-color:#CDCDCC;
+    }
+    .tab.active{
+      background:#791632;
+      color:#fff;
+      border-color: rgba(255,255,255,.2);
+      box-shadow: 0 10px 20px rgba(121,22,50,.20);
+    }
+
+    @media (max-width: 680px){
+      .tabs-row{ grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 420px){
+      .tabs-row{ grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .tab-divider{
+      height:1px;
+      background:#EAEAEA;
+      margin: 10px 0;
+    }
+
+    /* ===== Hijos (subtabs) - horizontal ===== */
+    .child-tabs-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-top: 2px;
+      flex-wrap:wrap;
+    }
+
+    .child-tabs{
+      display:flex;
+      gap:10px;
+      flex-wrap:nowrap;
+      overflow-x:auto;
+      align-items:center;
+      justify-content:flex-start;
+      padding-bottom: 4px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .child-tabs::-webkit-scrollbar{ height: 8px; }
+    .child-tabs::-webkit-scrollbar-track{ background: #FAFAFA; border-radius: 999px; }
+    .child-tabs::-webkit-scrollbar-thumb{ background: #CDCDCC; border-radius: 999px; }
+
+    .mini-btn{
+      border:none;
+      cursor:pointer;
+      border-radius:10px;
+      padding:9px 10px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      font-weight:900;
+      background:#fff;
+      color:#791632;
+      border:1px solid #EAEAEA;
+      transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+      user-select:none;
+      white-space:nowrap;
+      font-size: 12px;
+    }
+    .mini-btn:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 10px 20px rgba(0,0,0,.06);
+      border-color:#CDCDCC;
+    }
+    .mini-btn svg{ width:16px; height:16px; }
+
+    /* ===== Panels PADRE ===== */
+    .tab-panel{ display:none; margin-bottom: 16px; }
+    .tab-panel.active{ display:block; }
+
+    .card{
+      background:#fff;
+      border: 1px solid #CDCDCC;
+      border-radius: 12px;
+      padding: 18px;
+    }
+
+    .card-header{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .card-icon{
+      width: 30px; height: 30px;
+      border-radius: 10px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .card-icon.burgundy{ background:#791632; }
+    .card-icon.pink{ background:#B23858; }
+    .card-icon svg{ width:18px; height:18px; color:#fff; }
+
+    .card h3{ color:#791632; font-weight:900; font-size: 15px; }
+    .card p, .card li{ color:#000; line-height: 1.65; font-size: 13px; }
+
+    /* ===== Índice ===== */
+    .index-list{
+      margin-top: 10px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .index-item{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      border:1px solid #EAEAEA;
+      background:#fff;
+      border-radius:12px;
+      padding: 10px 12px;
+    }
+
+    .index-item a{
+      color:#791632;
+      text-decoration:none;
+      font-weight:900;
+      font-size: 13px;
+    }
+    .index-item a:hover{ text-decoration: underline; }
+
+    .index-sublist{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      margin-left: 18px;
+      padding-left: 12px;
+      border-left: 2px solid #EAEAEA;
+    }
+
+    .index-subitem{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      border:1px solid #EAEAEA;
+      background:#FAFAFA;
+      border-radius:12px;
+      padding: 9px 12px;
+    }
+    .index-subitem a{
+      color:#791632;
+      text-decoration:none;
+      font-weight:900;
+      font-size: 13px;
+    }
+    .index-subitem a:hover{ text-decoration: underline; }
+
+    /* ===== Acordeón ===== */
+    .subtema-wrap{ scroll-margin-top: 18px; }
+
+    details.accordion{
+      border: 1px solid #CDCDCC;
+      border-radius: 12px;
+      background:#fff;
+      overflow:hidden;
+    }
+
+    details.accordion > summary{
+      list-style:none;
+      cursor:pointer;
+      user-select:none;
+      padding: 14px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    details.accordion > summary::-webkit-details-marker{ display:none; }
+
+    .summary-left{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width: 0;
+    }
+
+    .summary-title{
+      font-weight: 900;
+      color:#791632;
+      font-size: 15px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+      max-width: 640px;
+    }
+
+    .chev{
+      width: 34px; height: 34px;
+      border-radius: 10px;
+      border:1px solid #EAEAEA;
+      background:#FAFAFA;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition: transform .2s ease;
+      flex:0 0 auto;
+    }
+    details[open] .chev{ transform: rotate(180deg); }
+
+    .accordion-body{
+      padding: 0 16px 16px 16px;
+      border-top: 1px solid #EAEAEA;
+    }
+
+    .inline-actions{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-left:auto;
+    }
+    .pill{
+      border:1px solid #EAEAEA;
+      background:#FAFAFA;
+      color:#791632;
+      border-radius:999px;
+      padding: 6px 10px;
+      font-weight:900;
+      font-size: 12px;
+      cursor:pointer;
+      user-select:none;
+      transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .pill:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 10px 20px rgba(0,0,0,.06);
+      border-color:#CDCDCC;
+    }
+
+    .footer-bar{
+      height: 7px;
+      background: linear-gradient(90deg, #791632 0%, #A83150 50%, #B23858 100%);
+      border-radius: 999px;
+      margin-top: 6px;
+    }
+
+    @media (max-width: 768px){
+      body{ padding: 12px; }
+      .header-top{ flex-direction:column; }
+      .tipo-badge{ width:100%; min-width: unset; }
+      .duracion-dates{ flex-direction:column; }
+      .ruta-steps{ flex-wrap:wrap; justify-content:center; }
+      .ruta-line{ display:none; }
+      .summary-title{ max-width: 240px; }
+      .index-sublist{ margin-left: 10px; padding-left: 10px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- Toolbar superior (SOLO editor; se elimina al exportar) -->
+    <div class="toolbar" id="app-toolbar" data-editoronly="true">
+      <button class="btn" type="button" onclick="volverAlInicio()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m15 18-6-6 6-6"></path>
+        </svg>
+        Volver al inicio
+      </button>
+
+      <button class="btn primary" type="button" onclick="copiarHTML()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+        Copiar código HTML
+      </button>
+    </div>
+
+    <!-- Header del Recurso -->
+    <div class="header-section">
+      <div class="header-top">
+        <div class="header-main" style="flex:1;">
+          <h1 contenteditable="true">Nombre de la materia</h1>
+
+          <div class="header-badges">
+            <div class="badge">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+              </svg>
+              <span contenteditable="true">Semana 1</span>
+            </div>
+
+            <div class="badge badge-yellow">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#791632" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span contenteditable="true">15 min</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tipo-badge">
+          <div>Guía de contenido</div>
+        </div>
+      </div>
+
+      <div class="duracion-box">
+        <label>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          Duración
+        </label>
+
+        <div class="duracion-dates">
+          <input type="date" value="2024-01-15" />
+          <div class="duracion-separator">
+            <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+          </div>
+          <input type="date" value="2024-01-21" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Ruta de Aprendizaje -->
+    <div class="ruta-section">
+      <h3>Ruta de Aprendizaje</h3>
+      <p>Progreso del módulo actual</p>
+
+      <div class="ruta-container">
+        <div class="ruta-line"><div></div></div>
+
+        <div class="ruta-steps">
+          <div class="step inactive">
+            <div class="step-icon inactive">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+            </div>
+            <p contenteditable="true">En curso</p>
+          </div>
+
+          <div class="step active">
+            <div class="step-icon active">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+            </div>
+            <p contenteditable="true">Guía de contenidos</p>
+          </div>
+
+          <div class="step inactive">
+            <div class="step-icon inactive">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+              </svg>
+            </div>
+            <p contenteditable="true">Video interactivo</p>
+          </div>
+
+          <div class="step inactive">
+            <div class="step-icon inactive">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </div>
+            <p contenteditable="true">Actividad</p>
+          </div>
+
+          <div class="step inactive">
+            <div class="step-icon inactive">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+                <path d="M8 7h6"></path>
+                <path d="M8 11h8"></path>
+              </svg>
+            </div>
+            <p contenteditable="true">Lecturas</p>
+          </div>
+
+          <div class="step inactive">
+            <div class="step-icon inactive">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 11l3 3L22 4"></path>
+                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+              </svg>
+            </div>
+            <p contenteditable="true">Examen</p>
+          </div>
+
+          <div class="step inactive">
+            <div class="step-icon inactive">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <p contenteditable="true">Cierre</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ✅ Barra de navegación (SE MANTIENE en el HTML exportado) -->
+    <div class="tabs-wrap">
+      <div class="tabs-row" id="parentTabs">
+        <button class="tab active" type="button" data-tab="indice">Índice</button>
+        <button class="tab" type="button" data-tab="introduccion">Introducción</button>
+        <button class="tab" type="button" data-tab="contenido">Contenido</button>
+        <button class="tab" type="button" data-tab="conclusion">Conclusión</button>
+        <button class="tab" type="button" data-tab="referencias">Referencias</button>
+      </div>
+
+      <!-- Hijos SOLO para "Contenido" (se mantiene; se exporta SIN botones de editar) -->
+      <div id="childTabsArea" style="display:none;">
+        <div class="tab-divider"></div>
+        <div class="child-tabs-head">
+          <div class="child-tabs" id="childTabs"></div>
+
+          <!-- SOLO editor -->
+          <div style="display:flex; gap:8px; flex-wrap:wrap;" data-editoronly="true">
+            <button class="mini-btn" type="button" onclick="agregarSubtema()">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14"></path>
+                <path d="M5 12h14"></path>
+              </svg>
+              Agregar subtema
+            </button>
+
+            <button class="mini-btn" type="button" onclick="eliminarUltimoSubtema()">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 6h18"></path>
+                <path d="M8 6V4h8v2"></path>
+                <path d="M19 6l-1 14H6L5 6"></path>
+                <path d="M10 11v6"></path>
+                <path d="M14 11v6"></path>
+              </svg>
+              Eliminar último
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panels -->
+    <section class="tab-panel active" id="panel-indice">
+      <div class="card" id="sec-indice">
+        <div class="card-header">
+          <div class="card-icon burgundy">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 6h13"></path><path d="M8 12h13"></path><path d="M8 18h13"></path>
+              <path d="M3 6h.01"></path><path d="M3 12h.01"></path><path d="M3 18h.01"></path>
+            </svg>
+          </div>
+          <h3 contenteditable="true">Índice</h3>
+        </div>
+
+        <p contenteditable="true" style="margin-bottom:10px;">
+          Haz clic para ir a la sección. Si es un subtema, también se abrirá su acordeón.
+        </p>
+
+        <div class="index-list" id="indexList"></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="panel-introduccion">
+      <div class="card subtema-wrap" id="sec-introduccion">
+        <div class="card-header">
+          <div class="card-icon burgundy">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+          </div>
+          <h3 contenteditable="true">Introducción</h3>
+        </div>
+
+        <p contenteditable="true" style="min-height: 140px;">
+          Redacta aquí una introducción breve que contextualice la guía de contenido de la semana: propósito, alcance y cómo debe usarse por el estudiante.
+        </p>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="panel-contenido">
+      <div id="subtemasContainer" style="display:flex; flex-direction:column; gap:16px;"></div>
+      <div class="footer-bar"></div>
+    </section>
+
+    <section class="tab-panel" id="panel-conclusion">
+      <div class="card subtema-wrap" id="sec-conclusion">
+        <div class="card-header">
+          <div class="card-icon burgundy">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 6 9 17l-5-5"></path>
+            </svg>
+          </div>
+          <h3 contenteditable="true">Conclusión</h3>
+        </div>
+
+        <p contenteditable="true" style="min-height: 120px;">
+          Cierra la guía de contenido con una síntesis: ideas clave, relación con el logro de objetivos y una invitación a avanzar con las actividades.
+        </p>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="panel-referencias">
+      <div class="card subtema-wrap" id="sec-referencias">
+        <div class="card-header">
+          <div class="card-icon burgundy">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+            </svg>
+          </div>
+          <h3 contenteditable="true">Referencias</h3>
+        </div>
+
+        <p contenteditable="true" style="min-height: 140px;">
+          Incluye aquí las referencias en el formato que corresponda (por ejemplo, APA). Puedes separar por “Bibliografía básica” y “Complementaria” si aplica.
+        </p>
+      </div>
+    </section>
+
+    <div class="footer-bar"></div>
+  </div>
+
+  <script>
+    function volverAlInicio() {
+      const msg = "recuerda que el contenido NO se guarda cuando sales, asegurate de que si terminaste, copiaste el codigo html y lo incertaste en un word";
+      const ok = window.confirm(msg);
+      if (ok) window.location.href = "/";
+    }
+
+    // ✅ Export: mantiene navegación + scripts (interactividad),
+    // pero elimina SOLO lo de edición y quita contenteditable (contenido estático).
+    function buildExportHTML() {
+      const clone = document.documentElement.cloneNode(true);
+
+      // 1) Quitar elementos solo-editor
+      clone.querySelectorAll('[data-editoronly="true"]').forEach(el => el.remove());
+
+      // 2) Convertir todo a estático
+      clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+
+      // 3) Inputs readonly (opcional)
+      clone.querySelectorAll('input[type="date"]').forEach(inp => inp.setAttribute('readonly', 'readonly'));
+
+      // 4) NO removemos scripts, NO mostramos todos los paneles:
+      //    se mantiene navegación por pestañas en el export.
+
+      const doctype = '<!DOCTYPE html>';
+      return doctype + '\n' + clone.outerHTML;
+    }
+
+    async function copiarHTML() {
+      const html = buildExportHTML();
+      try {
+        await navigator.clipboard.writeText(html);
+        alert("Código HTML copiado. Pégalo en Word.");
+      } catch (e) {
+        const ta = document.createElement('textarea');
+        ta.value = html;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        alert("Código HTML copiado. Pégalo en Word.");
+      }
+    }
+
+    const parentTabs = document.getElementById('parentTabs');
+    const childTabsArea = document.getElementById('childTabsArea');
+
+    function setParentTab(tabKey){
+      parentTabs.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      const btn = parentTabs.querySelector('[data-tab="' + tabKey + '"]');
+      if (btn) btn.classList.add('active');
+
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      const panel = document.getElementById('panel-' + tabKey);
+      if (panel) panel.classList.add('active');
+
+      if (childTabsArea) childTabsArea.style.display = (tabKey === 'contenido') ? 'block' : 'none';
+    }
+
+    parentTabs.addEventListener('click', (e) => {
+      const btn = e.target.closest('.tab');
+      if (!btn) return;
+      setParentTab(btn.getAttribute('data-tab'));
+    });
+
+    const childTabs = document.getElementById('childTabs');
+    const subtemasContainer = document.getElementById('subtemasContainer');
+    const indexList = document.getElementById('indexList');
+
+    let subtemaCount = 0;
+
+    function setActiveChildTab(id) {
+      if (!childTabs) return;
+      childTabs.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      const t = childTabs.querySelector('[data-subtab="' + id + '"]');
+      if (t) t.classList.add('active');
+    }
+
+    function openAccordionById(id){
+      const det = document.getElementById(id);
+      if (det && det.tagName.toLowerCase() === 'details'){
+        det.open = true;
+      }
+    }
+
+    function openFirstSubtemaIfAny() {
+      const first = subtemasContainer.querySelector('details.accordion');
+      if (!first) return;
+      first.open = true;
+      setActiveChildTab(first.id);
+      setTimeout(() => first.scrollIntoView({behavior:'smooth', block:'start'}), 60);
+    }
+
+    function scrollToAnchorAndOpen(hash){
+      const clean = (hash || '').replace('#','').trim();
+      if (!clean) return;
+
+      if (clean === 'sec-introduccion'){
+        setParentTab('introduccion');
+        setTimeout(() => document.getElementById(clean)?.scrollIntoView({behavior:'smooth', block:'start'}), 60);
+        return;
+      }
+      if (clean === 'sec-conclusion'){
+        setParentTab('conclusion');
+        setTimeout(() => document.getElementById(clean)?.scrollIntoView({behavior:'smooth', block:'start'}), 60);
+        return;
+      }
+      if (clean === 'sec-referencias'){
+        setParentTab('referencias');
+        setTimeout(() => document.getElementById(clean)?.scrollIntoView({behavior:'smooth', block:'start'}), 60);
+        return;
+      }
+
+      setParentTab('contenido');
+      setTimeout(() => {
+        openAccordionById(clean);
+        document.getElementById(clean)?.scrollIntoView({behavior:'smooth', block:'start'});
+        setActiveChildTab(clean);
+      }, 60);
+    }
+
+    function rebuildIndice() {
+      indexList.innerHTML = '';
+
+      indexList.appendChild(makeIndexItem('Introducción', '#sec-introduccion'));
+      indexList.appendChild(makeIndexItem('Contenido', '#sec-contenido', true));
+
+      const subList = document.createElement('div');
+      subList.className = 'index-sublist';
+
+      const subtemas = [...subtemasContainer.querySelectorAll('details.accordion')];
+      if (subtemas.length === 0){
+        const empty = document.createElement('div');
+        empty.className = 'index-subitem';
+        empty.innerHTML = '<span style="color:#777878; font-weight:800; font-size:13px;">Aún no hay subtemas.</span>';
+        subList.appendChild(empty);
+      } else {
+        subtemas.forEach((det, i) => {
+          const titleEl = det.querySelector('[data-subtema-title]');
+          const title = (titleEl && titleEl.textContent.trim()) ? titleEl.textContent.trim() : ('Subtema ' + (i+1));
+
+          const a = document.createElement('a');
+          a.href = '#' + det.id;
+          a.textContent = title;
+          a.addEventListener('click', (ev) => {
+            ev.preventDefault();
+            scrollToAnchorAndOpen('#' + det.id);
+            history.replaceState(null, '', '#' + det.id);
+          });
+
+          const row = document.createElement('div');
+          row.className = 'index-subitem';
+          row.appendChild(a);
+          subList.appendChild(row);
+        });
+      }
+      indexList.appendChild(subList);
+
+      indexList.appendChild(makeIndexItem('Conclusión', '#sec-conclusion'));
+      indexList.appendChild(makeIndexItem('Referencias', '#sec-referencias'));
+    }
+
+    function makeIndexItem(label, hash, isContenido=false){
+      const row = document.createElement('div');
+      row.className = 'index-item';
+
+      const a = document.createElement('a');
+      a.href = hash;
+      a.textContent = label;
+      a.addEventListener('click', (ev) => {
+        ev.preventDefault();
+
+        if (isContenido){
+          setParentTab('contenido');
+          setTimeout(() => openFirstSubtemaIfAny(), 60);
+          history.replaceState(null, '', '#sec-contenido');
+          return;
+        }
+
+        scrollToAnchorAndOpen(hash);
+        history.replaceState(null, '', hash);
+      });
+
+      row.appendChild(a);
+      return row;
+    }
+
+    function rebuildChildTabs() {
+      childTabs.innerHTML = '';
+      const subtemas = [...subtemasContainer.querySelectorAll('details.accordion')];
+      if (subtemas.length === 0) return;
+
+      subtemas.forEach((det, i) => {
+        const titleEl = det.querySelector('[data-subtema-title]');
+        const title = (titleEl && titleEl.textContent.trim()) ? titleEl.textContent.trim() : ('Subtema ' + (i+1));
+        const id = det.id;
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'tab' + (i === 0 ? ' active' : '');
+        btn.setAttribute('data-subtab', id);
+        btn.textContent = title.length > 18 ? title.slice(0, 18) + '…' : title;
+
+        btn.addEventListener('click', () => {
+          scrollToAnchorAndOpen('#' + id);
+          setActiveChildTab(id);
+        });
+
+        childTabs.appendChild(btn);
+      });
+    }
+
+    function wireTitleLiveUpdate(detailsEl) {
+      const titleEl = detailsEl.querySelector('[data-subtema-title]');
+      if (!titleEl) return;
+      titleEl.addEventListener('input', () => { rebuildChildTabs(); rebuildIndice(); });
+    }
+
+    function createSubtema() {
+      subtemaCount += 1;
+      const id = 'subtema-' + subtemaCount;
+
+      const details = document.createElement('details');
+      details.className = 'accordion subtema-wrap';
+      details.id = id;
+
+      details.innerHTML = `
+        <summary>
+          <div class="summary-left">
+            <div class="card-icon pink" style="flex:0 0 auto;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+              </svg>
+            </div>
+            <div class="summary-title" contenteditable="true" data-subtema-title>Subtema ${subtemaCount}</div>
+          </div>
+
+          <div style="display:flex; align-items:center; gap:10px;">
+            <!-- SOLO editor -->
+            <div class="inline-actions" data-editoronly="true">
+              <div class="pill" onclick="event.preventDefault(); event.stopPropagation(); goToSubtema('${id}')">Ir</div>
+              <div class="pill" onclick="event.preventDefault(); event.stopPropagation(); eliminarSubtema('${id}')">Eliminar</div>
+            </div>
+            <div class="chev" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </div>
+          </div>
+        </summary>
+
+        <div class="accordion-body">
+          <p contenteditable="true" style="min-height: 140px;">
+            Redacta aquí el desarrollo del subtema: conceptos clave, explicaciones, ejemplos y orientaciones para el estudio.
+          </p>
+        </div>
+      `;
+
+      subtemasContainer.appendChild(details);
+      wireTitleLiveUpdate(details);
+      rebuildChildTabs();
+      rebuildIndice();
+    }
+
+    function goToSubtema(id){
+      scrollToAnchorAndOpen('#' + id);
+      history.replaceState(null, '', '#' + id);
+    }
+
+    function agregarSubtema() {
+      setParentTab('contenido');
+      createSubtema();
+      const last = subtemasContainer.querySelector('details.accordion:last-child');
+      if (last) {
+        setActiveChildTab(last.id);
+        setTimeout(() => {
+          last.open = true;
+          last.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 60);
+      }
+    }
+
+    function eliminarSubtema(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const ok = window.confirm("¿Eliminar este subtema? (No se puede deshacer)");
+      if (!ok) return;
+      el.remove();
+      rebuildChildTabs();
+      rebuildIndice();
+    }
+
+    function eliminarUltimoSubtema() {
+      const last = subtemasContainer.querySelector('details.accordion:last-child');
+      if (!last) return;
+      eliminarSubtema(last.id);
+    }
+
+    window.addEventListener('hashchange', () => scrollToAnchorAndOpen(location.hash));
+    window.eliminarSubtema = eliminarSubtema;
+    window.goToSubtema = goToSubtema;
+
+    // Inicial
+    createSubtema();
+    createSubtema();
+    rebuildChildTabs();
+    rebuildIndice();
+
+    if (location.hash) setTimeout(() => scrollToAnchorAndOpen(location.hash), 120);
+  </script>
+</body>
+</html>
