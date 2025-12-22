@@ -12,10 +12,11 @@
       background:#fff;
       color:#000;
       line-height:1.55;
-      padding: 16px; /* ↓ más pequeño */
+      padding: 16px;
+      overflow-x:hidden;
     }
 
-    .container{ max-width: 980px; margin: 0 auto; } /* ↓ más pequeño */
+    .container{ max-width: 980px; margin: 0 auto; }
 
     /* ===== Toolbar superior (2 botones) ===== */
     .toolbar{
@@ -41,6 +42,7 @@
       transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
       user-select:none;
       white-space:nowrap;
+      min-width:0;
     }
     .toolbar .btn:hover{
       transform: translateY(-1px);
@@ -62,8 +64,8 @@
     .header-section{
       background: linear-gradient(135deg, #791632 0%, #A83150 50%, #791632 100%);
       border-radius: 12px;
-      padding: 22px;               /* ↓ más pequeño */
-      margin-bottom: 18px;         /* ↓ más pequeño */
+      padding: 16px;
+      margin-bottom: 12px;
       box-shadow: 0 10px 25px rgba(121, 22, 50, 0.22);
     }
 
@@ -71,15 +73,17 @@
       display:flex;
       align-items:flex-start;
       justify-content:space-between;
-      margin-bottom: 14px;         /* ↓ más pequeño */
+      margin-bottom: 12px;
       gap:12px;
+      flex-wrap:wrap;
     }
 
     .header-main h1{
       color:#fff;
-      font-size: 28px;             /* ↓ más pequeño */
+      font-size: 26px;
       font-weight: 800;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+      min-width:0;
     }
 
     .header-badges{
@@ -87,6 +91,7 @@
       align-items:center;
       gap:10px;
       flex-wrap:wrap;
+      min-width:0;
     }
 
     .badge{
@@ -96,11 +101,12 @@
       background: rgba(255,255,255,0.12);
       backdrop-filter: blur(10px);
       border-radius: 999px;
-      padding: 7px 12px;           /* ↓ más pequeño */
+      padding: 7px 12px;
+      min-width:0;
     }
 
     .badge svg{ width:18px; height:18px; color:#fff; }
-    .badge span{ color:#fff; font-weight:700; font-size: 13px; }
+    .badge span{ color:#fff; font-weight:700; font-size: 13px; min-width:0; }
 
     .badge-yellow{
       background:#FAC049;
@@ -115,15 +121,17 @@
       background: rgba(255,255,255,0.20);
       backdrop-filter: blur(10px);
       border-radius: 12px;
-      padding: 10px 14px;          /* ↓ más pequeño */
+      padding: 10px 14px;
       border: 1px solid rgba(255,255,255,0.30);
       min-width: 190px;
       text-align:center;
+      min-width:0;
     }
     .tipo-badge div{
       color:#fff;
       font-weight:900;
-      font-size: 14px;             /* ↓ más pequeño */
+      font-size: 14px;
+      min-width:0;
     }
 
     .duracion-box{
@@ -131,7 +139,7 @@
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255,255,255,0.20);
       border-radius: 12px;
-      padding: 14px;               /* ↓ más pequeño */
+      padding: 14px;
     }
 
     .duracion-box label{
@@ -144,16 +152,19 @@
       gap:8px;
       margin-bottom: 10px;
       font-weight: 800;
+      min-width:0;
     }
 
     .duracion-dates{
       display:flex;
       align-items:center;
       gap:10px;
+      flex-wrap:wrap;
     }
 
     .duracion-dates input{
       flex:1;
+      min-width: 180px;
       background: rgba(255,255,255,0.10);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255,255,255,0.20);
@@ -179,8 +190,8 @@
     .ruta-section{
       background:#EAEAEA;
       border-radius:12px;
-      padding: 20px;               /* ↓ más pequeño */
-      margin-bottom: 18px;         /* ↓ más pequeño */
+      padding: 14px;
+      margin-bottom: 12px;
     }
 
     .ruta-section h3{
@@ -193,7 +204,7 @@
     .ruta-section > p{
       color:#777878;
       font-size: 12px;
-      margin-bottom: 18px;
+      margin-bottom: 12px;
       font-weight: 700;
     }
 
@@ -216,6 +227,7 @@
       align-items:flex-start;
       justify-content:space-between;
       gap: 6px;
+      min-width:0;
     }
 
     .step{
@@ -227,13 +239,13 @@
     }
 
     .step-icon{
-      width: 52px;                 /* ↓ más pequeño */
-      height: 52px;                /* ↓ más pequeño */
+      width: 48px;
+      height: 48px;
       border-radius:50%;
       display:flex;
       align-items:center;
       justify-content:center;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       position:relative;
       z-index:10;
       transition: all .25s ease;
@@ -273,8 +285,8 @@
     .content-grid{
       display:grid;
       grid-template-columns: 2fr 1fr;
-      gap: 16px;                   /* ↓ más pequeño */
-      margin-bottom: 16px;
+      gap: 12px;
+      margin-bottom: 12px;
     }
 
     @media (max-width: 1024px){
@@ -285,14 +297,16 @@
       background:#fff;
       border: 1px solid #CDCDCC;
       border-radius: 12px;
-      padding: 18px;               /* ↓ más pequeño */
+      padding: 14px;
+      max-width: 100%;
     }
 
     .card-header{
       display:flex;
       align-items:center;
       gap: 10px;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
+      min-width:0;
     }
 
     .card-icon{
@@ -301,14 +315,15 @@
       display:flex;
       align-items:center;
       justify-content:center;
+      flex: 0 0 auto;
     }
 
     .card-icon.burgundy{ background:#791632; }
     .card-icon.pink{ background:#B23858; }
     .card-icon svg{ width:18px; height:18px; color:#fff; }
 
-    .card h3{ color:#791632; font-weight:900; font-size: 15px; }
-    .card p, .card li{ color:#000; line-height: 1.65; font-size: 13px; }
+    .card h3{ color:#791632; font-weight:900; font-size: 15px; min-width:0; }
+    .card p, .card li{ color:#000; line-height: 1.45; font-size: 13px; }
 
     .card.dark{
       background:#791632;
@@ -319,11 +334,7 @@
     .card.dark .card-icon{ background: rgba(255,255,255,.18); }
     .card.dark p, .card.dark li{ color:#fff; }
 
-    .card ul{ list-style:none; padding:0; }
-    .card ul li{ display:flex; gap:8px; margin-bottom: 8px; font-size: 13px; }
-    .card ul li span:first-child{ color: rgba(255,255,255,.78); }
-
-    .sidebar{ display:flex; flex-direction:column; gap: 16px; } /* ↓ más pequeño */
+    .sidebar{ display:flex; flex-direction:column; gap: 12px; }
 
     .footer-bar{
       height: 7px;
@@ -339,6 +350,90 @@
       .duracion-dates{ flex-direction:column; }
       .ruta-steps{ flex-wrap:wrap; justify-content:center; }
       .ruta-line{ display:none; }
+    }
+
+    /* ===== FIX GLOBAL: evita overflow horizontal ===== */
+    [contenteditable], .card p, .card li, .card h3,
+    .header-main h1, .badge span, .tipo-badge div,
+    .step p, .ruta-section h3, .ruta-section > p{
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      max-width: 100%;
+      min-width:0;
+    }
+
+    /* ===== FIX: evitar márgenes ocultos dentro de contenteditable ===== */
+    [contenteditable] *{
+      margin: 0 !important;
+      padding: 0 !important;
+      line-height: 1.45 !important;
+    }
+
+    /* ===== Bienvenida: mantener compactación y saltos con <br> (sin huecos raros) ===== */
+    #bienvenida-text{
+      white-space: normal;
+      line-height: 1.45;
+    }
+
+    /* =========================================================
+       OBJETIVOS: estilo compacto (sin descuadres)
+       ========================================================= */
+    .editable-objetivos{
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display:flex;
+      flex-direction:column;
+      gap: 8px;
+      line-height: 1.3;
+    }
+
+    .editable-objetivos li{
+      display:flex;
+      align-items:flex-start;
+      gap: 8px;
+      margin: 0 !important;
+      padding: 0 !important;
+      line-height: 1.3 !important;
+      min-height: 0;
+    }
+
+    .editable-objetivos li .objetivo-icon{
+      width: 14px;
+      height: 14px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      flex: 0 0 14px;
+      margin-top: 2px;
+    }
+
+    .editable-objetivos li .objetivo-icon svg{
+      width: 14px;
+      height: 14px;
+      display:inline-block;
+      vertical-align: middle;
+      color: rgba(255,255,255,.85);
+    }
+
+    .editable-objetivos li span:last-child{
+      flex: 1 1 auto;
+      min-width: 0;
+      line-height: 1.3 !important;
+    }
+
+    /* =========================================================
+       TEMAS: viñeta solo al inicio y con Enter
+       ========================================================= */
+    .editable-temas{
+      outline:none;
+      line-height: 1.3;
+    }
+    .editable-temas div,
+    .editable-temas p{
+      display:inline !important;
+      margin:0 !important;
+      padding:0 !important;
     }
   </style>
 </head>
@@ -516,7 +611,7 @@
           <h3 contenteditable="true">¡Bienvenido(a) a la Semana 1!</h3>
         </div>
 
-        <p contenteditable="true" style="min-height: 110px;">
+        <p id="bienvenida-text" contenteditable="true" style="min-height: 110px;">
           La bienvenida semanal es un espacio introductorio que permite situar al estudiante en los contenidos y propósitos de la semana. Su finalidad es contextualizar el aprendizaje, generar interés y orientar el trabajo que se desarrollará.<br><br>
 
           <strong>Al redactarla, se sugiere:</strong><br>
@@ -536,18 +631,43 @@
         <div class="card dark">
           <div class="card-header">
             <div class="card-icon">
+              <!-- ICONO DIANA (TARGET) -->
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="6"></circle>
+                <circle cx="12" cy="12" r="2"></circle>
+                <path d="M22 2l-4 4"></path>
+                <path d="M18 6l-2-2"></path>
               </svg>
             </div>
             <h3 contenteditable="true">Objetivos</h3>
           </div>
 
-          <ul contenteditable="true">
-            <li><span>✓</span><span>Colocar 3 objetivos que se deben alcanzar esta semana</span></li>
-            <li><span>✓</span><span>Deben ser medibles y alcanzables</span></li>
-            <li><span>✓</span><span>Deben tener verbo de acción</span></li>
+          <ul contenteditable="true" class="editable-objetivos">
+            <li>
+              <span class="objetivo-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </span>
+              <span>Colocar 3 objetivos que se deben alcanzar esta semana</span>
+            </li>
+            <li>
+              <span class="objetivo-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </span>
+              <span>Deben ser medibles y alcanzables</span>
+            </li>
+            <li>
+              <span class="objetivo-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </span>
+              <span>Deben tener verbo de acción</span>
+            </li>
           </ul>
         </div>
 
@@ -564,7 +684,7 @@
             <h3 contenteditable="true" style="color:#B23858;">Temas</h3>
           </div>
 
-          <p contenteditable="true" style="font-size: 13px;">
+          <p contenteditable="true" class="editable-temas" style="font-size: 13px;">
             • Colocar los temas que se tratarán esta semana<br>
             • Los temas deben ser los mismos del syllabus<br>
             •
@@ -578,32 +698,27 @@
   </div>
 
   <script>
+    /* ===== GitHub Pages: ruta de inicio RELATIVA =====
+       Si tu repo es: https://usuario.github.io/mi-repo/
+       y tu archivo se llama index.html en la raíz,
+       esto funciona perfecto.
+    */
     function volverAlInicio() {
       const msg = "recuerda que el contenido NO se guarda cuando sales, asegurate de que si terminaste, copiaste el codigo html y lo incertaste en un word";
       const ok = window.confirm(msg);
-      if (ok) window.location.href = "./index.html";
+      if (ok) {
+        // Opción A (recomendada): vuelve al index del mismo folder
+        window.location.href = "./index.html";
+        // Opción B: window.location.href = "./";
+      }
     }
 
     function buildExportHTML() {
-      // Clonamos el documento para exportar SIN toolbar y SIN edición
       const clone = document.documentElement.cloneNode(true);
-
-      // 1) Quitar la toolbar (todo elemento marcado con data-noexport="true")
       clone.querySelectorAll('[data-noexport="true"]').forEach(el => el.remove());
-
-      // 2) Quitar "contenteditable" para que sea texto plano
-      clone.querySelectorAll('[contenteditable]').forEach(el => {
-        el.removeAttribute('contenteditable');
-      });
-
-      // 3) Hacer que los inputs de fecha queden solo lectura (si quieres)
-      clone.querySelectorAll('input[type="date"]').forEach(inp => {
-        inp.setAttribute('readonly', 'readonly');
-      });
-
-      // 4) (Opcional) Quitar cualquier script del export (para Word suele ser mejor)
+      clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+      clone.querySelectorAll('input[type="date"]').forEach(inp => inp.setAttribute('readonly', 'readonly'));
       clone.querySelectorAll('script').forEach(s => s.remove());
-
       const doctype = '<!DOCTYPE html>';
       return doctype + '\n' + clone.outerHTML;
     }
@@ -614,7 +729,6 @@
         await navigator.clipboard.writeText(html);
         alert("Código HTML copiado. Pégalo en Word.");
       } catch (e) {
-        // Fallback
         const ta = document.createElement('textarea');
         ta.value = html;
         document.body.appendChild(ta);
@@ -624,6 +738,226 @@
         alert("Código HTML copiado. Pégalo en Word.");
       }
     }
+
+    function placeCaretIn(el) {
+      const range = document.createRange();
+      const sel = window.getSelection();
+      range.selectNodeContents(el);
+      range.collapse(true);
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }
+
+    function checkIconSVG() {
+      return `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      `;
+    }
+
+    function normalizeObjetivos(ul) {
+      ul.querySelectorAll('br').forEach(br => br.remove());
+
+      ul.querySelectorAll('li').forEach(li => {
+        let icon = li.querySelector('.objetivo-icon');
+        if (!icon) {
+          icon = document.createElement('span');
+          icon.className = 'objetivo-icon';
+          icon.innerHTML = checkIconSVG();
+          li.insertBefore(icon, li.firstChild);
+        }
+
+        let textSpan = [...li.querySelectorAll('span')].filter(s => !s.classList.contains('objetivo-icon')).pop();
+        if (!textSpan) {
+          textSpan = document.createElement('span');
+          textSpan.innerHTML = '&#8203;';
+          li.appendChild(textSpan);
+        }
+
+        const cleanText = (textSpan.innerText || '').replace(/\u00A0/g, ' ').trim();
+        textSpan.textContent = cleanText;
+
+        [...li.childNodes].forEach(node => {
+          if (node.nodeType === 1) {
+            const el = node;
+            if (el.classList.contains('objetivo-icon')) return;
+            if (el === textSpan) return;
+            el.remove();
+          }
+          if (node.nodeType === 3) {
+            if (!node.textContent.trim()) node.remove();
+          }
+        });
+
+        if (li.firstElementChild !== icon) li.insertBefore(icon, li.firstChild);
+        if (li.lastElementChild !== textSpan) li.appendChild(textSpan);
+      });
+
+      const lis = [...ul.querySelectorAll('li')];
+      const nonEmpty = lis.filter(li => (li.querySelector('span:not(.objetivo-icon)')?.textContent || '').trim().length > 0);
+
+      if (nonEmpty.length === 0 && lis.length) {
+        lis.slice(1).forEach(li => li.remove());
+        const firstText = lis[0].querySelector('span:not(.objetivo-icon)');
+        if (firstText) firstText.innerHTML = '&#8203;';
+        return;
+      }
+
+      lis.forEach(li => {
+        const txt = (li.querySelector('span:not(.objetivo-icon)')?.textContent || '').trim();
+        if (!txt && lis.length > 1) li.remove();
+      });
+    }
+
+    function ensureTemasStartsWithBullet(p) {
+      const txt = p.innerText.replace(/\u00A0/g, ' ').trim();
+      if (!txt) {
+        p.innerHTML = '• ';
+        return;
+      }
+      const firstLine = txt.split('\n')[0].trim();
+      if (!firstLine.startsWith('•')) {
+        p.innerHTML = '• ' + p.innerText.trim().replace(/\n/g, '<br>');
+      }
+    }
+
+    function normalizeTemasLines(p) {
+      const lines = p.innerText
+        .replace(/\u00A0/g, ' ')
+        .split('\n')
+        .map(l => l.trim())
+        .filter(l => l.length > 0)
+        .map(l => '• ' + l.replace(/^•\s*/,''));
+
+      p.innerHTML = lines.length ? lines.join('<br>') : '• ';
+    }
+
+    function normalizeBienvenida(p) {
+      const lines = [];
+      p.childNodes.forEach(n => {
+        if (n.nodeType === 3) {
+          const t = n.textContent.replace(/\u00A0/g,' ');
+          if (t.trim()) lines.push(t.trim());
+        } else if (n.nodeType === 1) {
+          const el = n;
+          if (el.tagName === 'BR') {
+            lines.push('\n');
+          } else if (el.tagName === 'STRONG') {
+            lines.push({ strong: el.textContent.replace(/\u00A0/g,' ').trim() });
+          } else {
+            const t = el.innerText.replace(/\u00A0/g,' ').trim();
+            if (t) lines.push(t);
+          }
+        }
+      });
+
+      let html = '';
+      let pendingBreak = 0;
+
+      const flushBreaks = () => {
+        if (pendingBreak <= 0) return;
+        const n = Math.min(pendingBreak, 2);
+        html += '<br>'.repeat(n);
+        pendingBreak = 0;
+      };
+
+      for (const item of lines) {
+        if (item === '\n') { pendingBreak++; continue; }
+        flushBreaks();
+        if (typeof item === 'object' && item.strong) {
+          html += `<strong>${escapeHTML(item.strong)}</strong>`;
+          continue;
+        }
+        const txt = String(item).replace(/\n{3,}/g, '\n\n').trim();
+        html += escapeHTML(txt);
+      }
+
+      html = html
+        .replace(/(<br>\s*){3,}/g, '<br><br>')
+        .replace(/\s{2,}/g, ' ');
+
+      p.innerHTML = html.trim() ? html : ' ';
+    }
+
+    function escapeHTML(str) {
+      return str
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const ulObj = document.querySelector('.editable-objetivos');
+      if (ulObj) {
+        normalizeObjetivos(ulObj);
+
+        ulObj.addEventListener('keydown', (e) => {
+          if (e.key !== 'Enter') return;
+          e.preventDefault();
+
+          const sel = window.getSelection();
+          if (!sel || sel.rangeCount === 0) return;
+
+          const node = sel.anchorNode;
+          const currentLi = node?.nodeType === 1 ? node.closest('li') : node?.parentElement?.closest('li');
+          if (!currentLi) return;
+
+          const currentTextSpan = currentLi.querySelector('span:not(.objetivo-icon)');
+          const currentText = (currentTextSpan?.textContent || '').trim();
+
+          if (!currentText) {
+            normalizeObjetivos(ulObj);
+            return;
+          }
+
+          const li = document.createElement('li');
+
+          const iconSpan = document.createElement('span');
+          iconSpan.className = 'objetivo-icon';
+          iconSpan.innerHTML = checkIconSVG();
+
+          const textSpan = document.createElement('span');
+          textSpan.innerHTML = '&#8203;';
+
+          li.appendChild(iconSpan);
+          li.appendChild(textSpan);
+
+          if (currentLi.nextSibling) ulObj.insertBefore(li, currentLi.nextSibling);
+          else ulObj.appendChild(li);
+
+          normalizeObjetivos(ulObj);
+          placeCaretIn(textSpan);
+        });
+
+        ulObj.addEventListener('input', () => normalizeObjetivos(ulObj));
+        ulObj.addEventListener('paste', () => setTimeout(() => normalizeObjetivos(ulObj), 0));
+        ulObj.addEventListener('blur', () => normalizeObjetivos(ulObj), true);
+      }
+
+      const pTemas = document.querySelector('.editable-temas');
+      if (pTemas) {
+        pTemas.addEventListener('focus', () => ensureTemasStartsWithBullet(pTemas));
+
+        pTemas.addEventListener('keydown', (e) => {
+          if (e.key !== 'Enter') return;
+          e.preventDefault();
+          document.execCommand('insertHTML', false, '<br>• ');
+        });
+
+        pTemas.addEventListener('paste', () => {
+          setTimeout(() => normalizeTemasLines(pTemas), 0);
+        });
+
+        pTemas.addEventListener('blur', () => normalizeTemasLines(pTemas));
+      }
+
+      const pBienv = document.getElementById('bienvenida-text');
+      if (pBienv) {
+        pBienv.addEventListener('paste', () => setTimeout(() => normalizeBienvenida(pBienv), 0));
+        pBienv.addEventListener('blur', () => normalizeBienvenida(pBienv));
+      }
+    });
   </script>
 </body>
 </html>
