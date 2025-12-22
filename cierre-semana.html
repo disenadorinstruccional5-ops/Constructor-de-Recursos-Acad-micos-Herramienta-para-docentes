@@ -3,22 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cierre de la Semana - Recurso Académico</title>
+  <title>Inicio de la Semana - Recurso Académico</title>
+
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin:0; padding:0; box-sizing:border-box; }
 
     body{
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       background:#fff;
       color:#000;
       line-height:1.55;
-      padding: 16px; /* más pequeño */
-      overflow-x: hidden; /* evita que se salga horizontal */
+      padding:16px;
+      overflow-x:hidden;
     }
 
-    .container{ max-width: 980px; margin: 0 auto; } /* más pequeño */
+    .container{ max-width:980px; margin:0 auto; }
 
-    /* ===== Toolbar superior (2 botones) ===== */
+    /* ===== Toolbar superior ===== */
     .toolbar{
       display:flex;
       align-items:center;
@@ -50,7 +51,6 @@
       background:#fff;
       border-color:#CDCDCC;
     }
-    .toolbar .btn:active{ transform: translateY(0px); }
     .toolbar .btn.primary{
       background:#791632;
       color:#fff;
@@ -60,35 +60,31 @@
     .toolbar .btn.primary:hover{ background:#A83150; }
     .toolbar .btn svg{ width:18px; height:18px; }
 
-    /* Header del Recurso */
+    /* ===== Header ===== */
     .header-section{
       background: linear-gradient(135deg, #791632 0%, #A83150 50%, #791632 100%);
-      border-radius: 12px;
-      padding: 22px;       /* más pequeño */
-      margin-bottom: 18px; /* más pequeño */
-      box-shadow: 0 10px 25px rgba(121, 22, 50, 0.22);
+      border-radius:12px;
+      padding:16px;
+      margin-bottom:12px;
+      box-shadow:0 10px 25px rgba(121, 22, 50, 0.22);
     }
-
     .header-top{
       display:flex;
       align-items:flex-start;
       justify-content:space-between;
-      margin-bottom: 14px; /* más pequeño */
       gap:12px;
-      min-width:0;
+      margin-bottom:12px;
       flex-wrap:wrap;
+      min-width:0;
     }
-
-    .header-main{ min-width:0; }
-
+    .header-main{ min-width:0; flex:1; }
     .header-main h1{
       color:#fff;
-      font-size: 28px; /* más pequeño */
-      font-weight: 800;
-      margin-bottom: 10px;
+      font-size:26px;
+      font-weight:800;
+      margin-bottom:8px;
       min-width:0;
     }
-
     .header-badges{
       display:flex;
       align-items:center;
@@ -96,66 +92,52 @@
       flex-wrap:wrap;
       min-width:0;
     }
-
     .badge{
       display:inline-flex;
       align-items:center;
       gap:8px;
       background: rgba(255,255,255,0.12);
       backdrop-filter: blur(10px);
-      border-radius: 999px;
-      padding: 7px 12px; /* más pequeño */
+      border-radius:999px;
+      padding:7px 12px;
       min-width:0;
     }
-
     .badge svg{ width:18px; height:18px; color:#fff; }
-    .badge span{ color:#fff; font-weight:700; font-size: 13px; min-width:0; }
+    .badge span{ color:#fff; font-weight:700; font-size:13px; min-width:0; }
 
     .badge-yellow{ background:#FAC049; }
-    .badge-yellow span{
-      color:#791632;
-      font-weight:900;
-      font-size: 12px;
-    }
+    .badge-yellow span{ color:#791632; font-weight:900; font-size:12px; }
 
     .tipo-badge{
       background: rgba(255,255,255,0.20);
       backdrop-filter: blur(10px);
-      border-radius: 12px;
-      padding: 10px 14px; /* más pequeño */
-      border: 1px solid rgba(255,255,255,0.30);
-      min-width: 190px;
+      border-radius:12px;
+      padding:10px 14px;
+      border:1px solid rgba(255,255,255,0.30);
+      min-width:190px;
       text-align:center;
       min-width:0;
     }
-    .tipo-badge div{
-      color:#fff;
-      font-weight:900;
-      font-size: 14px; /* más pequeño */
-      min-width:0;
-    }
+    .tipo-badge div{ color:#fff; font-weight:900; font-size:14px; }
 
     .duracion-box{
       background: rgba(255,255,255,0.10);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.20);
-      border-radius: 12px;
-      padding: 14px; /* más pequeño */
+      border:1px solid rgba(255,255,255,0.20);
+      border-radius:12px;
+      padding:14px;
     }
-
     .duracion-box label{
       color: rgba(255,255,255,0.75);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: .06em;
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.06em;
       display:flex;
       align-items:center;
       gap:8px;
-      margin-bottom: 10px;
-      font-weight: 800;
-      min-width:0;
+      margin-bottom:10px;
+      font-weight:800;
     }
-
     .duracion-dates{
       display:flex;
       align-items:center;
@@ -163,66 +145,43 @@
       flex-wrap:wrap;
       min-width:0;
     }
-
     .duracion-dates input{
       flex:1;
       min-width:180px;
       background: rgba(255,255,255,0.10);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.20);
-      border-radius: 10px;
-      padding: 10px 12px;
+      border:1px solid rgba(255,255,255,0.20);
+      border-radius:10px;
+      padding:10px 12px;
       color:#fff;
       font-weight:800;
       outline:none;
     }
-
-    .duracion-separator{
-      display:flex;
-      gap:6px;
-      padding: 0 8px;
-    }
-
+    .duracion-separator{ display:flex; gap:6px; padding:0 8px; }
     .duracion-separator .dot{
       width:7px; height:7px; border-radius:50%;
       background: rgba(255,255,255,0.55);
     }
 
-    /* Ruta de Aprendizaje */
+    /* ===== Ruta ===== */
     .ruta-section{
       background:#EAEAEA;
       border-radius:12px;
-      padding: 20px;       /* más pequeño */
-      margin-bottom: 18px; /* más pequeño */
+      padding:14px;
+      margin-bottom:12px;
     }
-
-    .ruta-section h3{
-      color:#791632;
-      font-weight:900;
-      margin-bottom:4px;
-      font-size: 15px;
-      min-width:0;
-    }
-
-    .ruta-section > p{
-      color:#777878;
-      font-size: 12px;
-      margin-bottom: 18px;
-      font-weight: 700;
-      min-width:0;
-    }
+    .ruta-section h3{ color:#791632; font-weight:900; margin-bottom:4px; font-size:15px; }
+    .ruta-section > p{ color:#777878; font-size:12px; margin-bottom:12px; font-weight:700; }
 
     .ruta-container{ position:relative; }
-
     .ruta-line{
       position:absolute;
-      top: 26px;
+      top:26px;
       left:0; right:0;
       display:flex;
       align-items:center;
-      padding: 0 24px;
+      padding:0 24px;
     }
-
     .ruta-line > div{ flex:1; height:2px; background:#CDCDCC; }
 
     .ruta-steps{
@@ -230,106 +189,76 @@
       display:flex;
       align-items:flex-start;
       justify-content:space-between;
-      gap: 6px;
+      gap:6px;
       min-width:0;
     }
 
-    .step{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      flex:1;
-      min-width: 84px;
-    }
-
+    .step{ display:flex; flex-direction:column; align-items:center; flex:1; min-width:84px; }
     .step-icon{
-      width: 52px; /* más pequeño */
-      height: 52px; /* más pequeño */
+      width:48px; height:48px;
       border-radius:50%;
       display:flex;
       align-items:center;
       justify-content:center;
-      margin-bottom: 10px;
+      margin-bottom:8px;
       position:relative;
       z-index:10;
       transition: all .25s ease;
     }
-
     .step-icon.active{
       background:#791632;
-      box-shadow: 0 4px 15px rgba(121,22,50,.25);
+      box-shadow:0 4px 15px rgba(121,22,50,.25);
       animation: heartbeat 1.5s ease-in-out infinite;
     }
-
-    .step-icon.inactive{
-      background:#fff;
-      border:2px solid #CDCDCC;
-    }
-
-    .step-icon svg{ width: 22px; height: 22px; }
+    .step-icon.inactive{ background:#fff; border:2px solid #CDCDCC; }
+    .step-icon svg{ width:22px; height:22px; }
     .step-icon.active svg{ color:#fff; }
     .step-icon.inactive svg{ color:#777878; }
 
-    .step p{
-      font-size: 11px;
-      text-align:center;
-      line-height:1.2;
-      max-width: 92px;
-      min-width:0;
-    }
-
+    .step p{ font-size:11px; text-align:center; line-height:1.2; max-width:92px; }
     .step.active p{ color:#791632; font-weight:900; }
     .step.inactive p{ color:#777878; font-weight:700; }
 
-    @keyframes heartbeat{
-      0%,100%{ transform: scale(1); }
-      50%{ transform: scale(1.05); }
-    }
+    @keyframes heartbeat{ 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
 
-    /* Contenido en columnas */
+    /* ===== Grid contenido ===== */
     .content-grid{
       display:grid;
       grid-template-columns: 2fr 1fr;
-      gap: 16px; /* más pequeño */
-      margin-bottom: 16px;
+      gap:12px;
+      margin-bottom:12px;
     }
-
-    @media (max-width: 1024px){
-      .content-grid{ grid-template-columns: 1fr; }
-    }
+    @media (max-width:1024px){ .content-grid{ grid-template-columns:1fr; } }
 
     .card{
       background:#fff;
-      border: 1px solid #CDCDCC;
-      border-radius: 12px;
-      padding: 18px; /* más pequeño */
-      max-width: 100%;
-      min-width: 0; /* FIX */
+      border:1px solid #CDCDCC;
+      border-radius:12px;
+      padding:14px;
+      max-width:100%;
+      min-width:0;
     }
-
     .card-header{
       display:flex;
       align-items:center;
-      gap: 10px;
-      margin-bottom: 12px;
+      gap:10px;
+      margin-bottom:8px;
       min-width:0;
     }
-
     .card-icon{
-      width: 30px; height: 30px;
-      border-radius: 10px;
+      width:30px; height:30px;
+      border-radius:10px;
       display:flex;
       align-items:center;
       justify-content:center;
-      flex: 0 0 auto;
+      flex:0 0 auto;
     }
-
     .card-icon.burgundy{ background:#791632; }
     .card-icon.pink{ background:#B23858; }
     .card-icon svg{ width:18px; height:18px; color:#fff; }
 
-    .card h3{ color:#791632; font-weight:900; font-size: 15px; min-width:0; }
-    .card p, .card li{ color:#000; line-height: 1.55; font-size: 13px; min-width:0; }
+    .card h3{ color:#791632; font-weight:900; font-size:15px; min-width:0; }
+    .card p, .card li{ color:#000; line-height:1.45; font-size:13px; }
 
     .card.dark{
       background:#791632;
@@ -340,98 +269,82 @@
     .card.dark .card-icon{ background: rgba(255,255,255,.18); }
     .card.dark p, .card.dark li{ color:#fff; }
 
-    .sidebar{ display:flex; flex-direction:column; gap: 16px; min-width:0; } /* más pequeño */
+    .sidebar{ display:flex; flex-direction:column; gap:12px; min-width:0; }
 
     .footer-bar{
-      height: 7px;
+      height:7px;
       background: linear-gradient(90deg, #791632 0%, #A83150 50%, #B23858 100%);
-      border-radius: 999px;
+      border-radius:999px;
     }
 
-    /* Responsive */
-    @media (max-width: 768px){
-      body{ padding: 12px; }
-      .header-top{ flex-direction:column; }
-      .tipo-badge{ width:100%; min-width: unset; }
-      .duracion-dates{ flex-direction:column; }
-      .ruta-steps{ flex-wrap:wrap; justify-content:center; }
-      .ruta-line{ display:none; }
-    }
-
-    /* =========================================================
-       FIX: contenido no se sale del límite + spacing estático
-       ========================================================= */
-    .content-grid > * { min-width: 0; }
-
+    /* ===== FIX: no overflow y sin “espacios raros” ===== */
+    .content-grid > *{ min-width:0; }
     .card, .card *{
-      max-width: 100%;
-      overflow-wrap: anywhere !important;
-      word-break: break-word !important;
+      max-width:100%;
+      overflow-wrap:anywhere !important;
+      word-break:break-word !important;
     }
-
     [contenteditable]{
-      max-width: 100%;
-      overflow-wrap: anywhere !important;
-      word-break: break-word !important;
+      max-width:100%;
+      overflow-wrap:anywhere !important;
+      word-break:break-word !important;
       white-space: pre-wrap;
-      min-width: 0;
+      min-width:0;
     }
-
-    /* Evita “saltos gigantes / descuadres” que mete contenteditable */
     [contenteditable] *{
-      margin: 0 !important;
-      padding: 0 !important;
-      line-height: 1.55 !important;
+      margin:0 !important;
+      padding:0 !important;
+      line-height:1.45 !important;
     }
-
-    /* Plan B para tokens extremos */
     .force-break{ word-break: break-all !important; }
 
-    /* =========================================================
-       CHECKLISTS (Logros y Temas): check al inicio y con Enter
-       ========================================================= */
+    /* ===== CHECKLIST (Objetivos + Temas) ===== */
     .editable-checklist{
-      list-style: none;
-      padding: 0;
-      margin: 0;
+      list-style:none;
+      padding:0;
+      margin:0;
       display:flex;
       flex-direction:column;
-      gap: 8px;
-      line-height: 1.3;
+      gap:8px;              /* SIN espacios gigantes */
+      line-height:1.3;
     }
-
     .editable-checklist li{
       display:flex;
       align-items:flex-start;
-      gap: 8px;
-      margin: 0 !important;
-      padding: 0 !important;
-      line-height: 1.3 !important;
-      min-height: 0;
-      min-width: 0;
+      gap:8px;
+      margin:0 !important;
+      padding:0 !important;
+      line-height:1.3 !important;
+      min-width:0;
     }
-
     .check-icon{
-      width: 14px;
-      height: 14px;
+      width:14px;
+      height:14px;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      flex: 0 0 14px;
-      margin-top: 2px;
-      color: rgba(255,255,255,.85);
+      flex:0 0 14px;
+      margin-top:2px;
     }
-
-    /* Para checklist en card clara */
-    .card:not(.dark) .check-icon{
-      color: #791632;
-      opacity: .85;
-    }
+    /* En card oscura el check va claro */
+    .card.dark .check-icon{ color: rgba(255,255,255,.85); }
+    /* En card clara el check va oscuro (como en tu screenshot) */
+    .card:not(.dark) .check-icon{ color:#000; opacity:.85; }
 
     .editable-checklist li span:last-child{
-      flex: 1 1 auto;
-      min-width: 0;
-      line-height: 1.3 !important;
+      flex:1 1 auto;
+      min-width:0;
+      line-height:1.3 !important;
+    }
+
+    /* Responsive */
+    @media (max-width:768px){
+      body{ padding:12px; }
+      .header-top{ flex-direction:column; }
+      .tipo-badge{ width:100%; min-width:unset; }
+      .duracion-dates{ flex-direction:column; }
+      .ruta-steps{ flex-wrap:wrap; justify-content:center; }
+      .ruta-line{ display:none; }
     }
   </style>
 </head>
@@ -442,7 +355,6 @@
     <!-- Toolbar superior (NO se copia al exportar) -->
     <div class="toolbar" id="app-toolbar" data-noexport="true">
       <button class="btn" type="button" onclick="volverAlInicio()">
-        <!-- Icono flecha izquierda -->
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="m15 18-6-6 6-6"></path>
         </svg>
@@ -450,7 +362,6 @@
       </button>
 
       <button class="btn primary" type="button" onclick="copiarHTML()">
-        <!-- Icono copiar -->
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="9" y="9" width="13" height="13" rx="2"></rect>
           <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -459,10 +370,10 @@
       </button>
     </div>
 
-    <!-- Header del Recurso -->
+    <!-- Header -->
     <div class="header-section">
       <div class="header-top">
-        <div class="header-main" style="flex:1;">
+        <div class="header-main">
           <h1 contenteditable="true" class="force-break">Nombre de la materia</h1>
 
           <div class="header-badges">
@@ -484,7 +395,7 @@
         </div>
 
         <div class="tipo-badge">
-          <div>Cierre de la semana</div>
+          <div>Inicio de la semana</div>
         </div>
       </div>
 
@@ -509,7 +420,7 @@
       </div>
     </div>
 
-    <!-- Ruta de Aprendizaje -->
+    <!-- Ruta -->
     <div class="ruta-section">
       <h3>Ruta de Aprendizaje</h3>
       <p>Progreso del módulo actual</p>
@@ -518,8 +429,8 @@
         <div class="ruta-line"><div></div></div>
 
         <div class="ruta-steps">
-          <div class="step inactive">
-            <div class="step-icon inactive">
+          <div class="step active">
+            <div class="step-icon active">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                 <polyline points="9 22 9 12 15 12 15 22"></polyline>
@@ -582,8 +493,8 @@
             <p contenteditable="true" class="force-break">Examen</p>
           </div>
 
-          <div class="step active">
-            <div class="step-icon active">
+          <div class="step inactive">
+            <div class="step-icon inactive">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                 <polyline points="22 4 12 14.01 9 11.01"></polyline>
@@ -595,57 +506,59 @@
       </div>
     </div>
 
-    <!-- Contenido en dos columnas -->
+    <!-- Contenido -->
     <div class="content-grid">
-      <!-- Mensaje de Cierre -->
+      <!-- Bienvenida -->
       <div class="card">
         <div class="card-header">
           <div class="card-icon burgundy">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
             </svg>
           </div>
-          <h3 contenteditable="true" class="force-break">¡Felicitaciones por completar la Semana 1!</h3>
+          <h3 contenteditable="true" class="force-break">¡Bienvenido(a) a la Semana 1!</h3>
         </div>
 
-        <p contenteditable="true" class="force-break" style="min-height: 110px;">
-          El cierre semanal es un espacio de reflexión y consolidación que permite al estudiante integrar los aprendizajes alcanzados durante la semana. Su finalidad es reforzar los conceptos clave, valorar el progreso y preparar la transición hacia nuevos contenidos.<br><br>
+        <p contenteditable="true" class="force-break" style="min-height:110px;">
+          La bienvenida semanal es un espacio introductorio que permite situar al estudiante en los contenidos y propósitos de la semana. Su finalidad es contextualizar el aprendizaje, generar interés y orientar el trabajo que se desarrollará.<br><br>
 
-          <strong>Al redactarlo, se sugiere:</strong><br>
-          • Destacar los logros y aprendizajes más relevantes de la semana<br>
-          • Reconocer el esfuerzo y dedicación del estudiante<br>
-          • Conectar lo aprendido con aplicaciones prácticas o situaciones reales<br>
-          • Plantear preguntas de reflexión sobre el proceso de aprendizaje<br>
-          • Motivar hacia la continuidad del estudio y anticipar los próximos desafíos<br><br>
+          <strong>Al redactarla, se sugiere:</strong><br>
+          • Hacer referencia al tema o eje central de la semana<br>
+          • Vincular el contenido con la asignatura y, de ser pertinente, con lo trabajado previamente<br>
+          • Utilizar un lenguaje claro y cercano, acorde al nivel académico<br>
+          • Señalar de manera general qué se espera que el estudiante logre al finalizar la semana<br>
+          • Invitar a la participación activa y al compromiso con las actividades propuestas<br><br>
 
-          La redacción debe ser cercana y motivadora, celebrando el cierre del módulo mientras mantiene el interés por seguir avanzando.
+          La redacción es flexible y responde al estilo del docente, manteniendo siempre su función orientadora dentro de la guía.
         </p>
       </div>
 
-      <!-- Columna derecha -->
+      <!-- Sidebar -->
       <div class="sidebar">
-        <!-- Logros Alcanzados -->
+        <!-- Objetivos -->
         <div class="card dark">
           <div class="card-header">
             <div class="card-icon">
+              <!-- diana -->
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="6"></circle>
+                <circle cx="12" cy="12" r="2"></circle>
               </svg>
             </div>
-            <h3 contenteditable="true" class="force-break">Logros Alcanzados</h3>
+            <h3 contenteditable="true" class="force-break">Objetivos</h3>
           </div>
 
-          <!-- AHORA: checklist con checks y Enter genera nuevo ítem con check -->
+          <!-- ENTER = nuevo ítem con ✓ -->
           <ul contenteditable="true" class="editable-checklist force-break" data-checklist="true">
-            <li><span class="check-icon">✓</span><span>Enumerar 3 logros principales alcanzados durante la semana</span></li>
-            <li><span class="check-icon">✓</span><span>Destacar competencias desarrolladas y conocimientos adquiridos</span></li>
-            <li><span class="check-icon">✓</span><span>Reconocer el cumplimiento de los objetivos propuestos</span></li>
+            <li><span class="check-icon">✓</span><span>Colocar 3 objetivos que se deben alcanzar esta semana</span></li>
+            <li><span class="check-icon">✓</span><span>Deben ser medibles y alcanzables</span></li>
+            <li><span class="check-icon">✓</span><span>Deben tener verbo de acción</span></li>
           </ul>
         </div>
 
-        <!-- Temas Abordados -->
+        <!-- Temas -->
         <div class="card">
           <div class="card-header">
             <div class="card-icon pink">
@@ -655,14 +568,14 @@
                 <path d="M8 11h8"></path>
               </svg>
             </div>
-            <h3 contenteditable="true" style="color:#B23858;" class="force-break">Temas Abordados</h3>
+            <h3 contenteditable="true" style="color:#B23858;" class="force-break">Temas</h3>
           </div>
 
-          <!-- CAMBIO: pasa de viñetas a checklist (checks) y Enter genera nuevo ítem con check -->
+          <!-- ENTER = nuevo ítem con ✓ (se ve ordenado como tu screenshot) -->
           <ul contenteditable="true" class="editable-checklist force-break" data-checklist="true" style="font-size:13px;">
-            <li><span class="check-icon">✓</span><span>Resumir los temas principales estudiados durante la semana</span></li>
-            <li><span class="check-icon">✓</span><span>Destacar conceptos clave y puntos de mayor relevancia</span></li>
-            <li><span class="check-icon">✓</span><span>Vincular con lo que se trabajará en la próxima semana</span></li>
+            <li><span class="check-icon">✓</span><span>Colocar los temas que se tratarán esta semana</span></li>
+            <li><span class="check-icon">✓</span><span>Los temas deben ser los mismos del syllabus</span></li>
+            <li><span class="check-icon">✓</span><span></span></li>
           </ul>
         </div>
       </div>
@@ -677,31 +590,17 @@
       const ok = window.confirm(msg);
       if (!ok) return;
 
-      // FIX: funciona en GitHub Pages aunque estés en subcarpetas:
-      // navega al directorio actual (donde vive index.html)
+      // GitHub Pages friendly: vuelve al directorio actual (./)
       const base = new URL('.', window.location.href);
-      window.location.href = base.href; // carga ./ (index.html si existe)
+      window.location.href = base.href;
     }
 
     function buildExportHTML() {
       const clone = document.documentElement.cloneNode(true);
-
-      // 1) Quitar toolbar
       clone.querySelectorAll('[data-noexport="true"]').forEach(el => el.remove());
-
-      // 2) Quitar edición
-      clone.querySelectorAll('[contenteditable]').forEach(el => {
-        el.removeAttribute('contenteditable');
-      });
-
-      // 3) Fechas solo lectura
-      clone.querySelectorAll('input[type="date"]').forEach(inp => {
-        inp.setAttribute('readonly', 'readonly');
-      });
-
-      // 4) Quitar scripts del export (mejor para Word)
+      clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+      clone.querySelectorAll('input[type="date"]').forEach(inp => inp.setAttribute('readonly', 'readonly'));
       clone.querySelectorAll('script').forEach(s => s.remove());
-
       return '<!DOCTYPE html>\n' + clone.outerHTML;
     }
 
@@ -731,21 +630,13 @@
     }
 
     function normalizeChecklist(ul) {
-      // Quita <br> sueltos
       ul.querySelectorAll('br').forEach(br => br.remove());
 
-      // Asegura estructura: [✓][texto]
       ul.querySelectorAll('li').forEach(li => {
-        // quita nodos raros que mete contenteditable
-        [...li.childNodes].forEach(n => {
-          if (n.nodeType === 1) {
-            const el = n;
-            if (el.tagName === 'DIV' || el.tagName === 'P') {
-              // aplana texto si el navegador metió div/p
-              li.insertAdjacentText('beforeend', ' ' + el.innerText);
-              el.remove();
-            }
-          }
+        // aplana DIV/P si el browser los mete
+        [...li.querySelectorAll('div,p')].forEach(w => {
+          li.insertAdjacentText('beforeend', ' ' + w.innerText);
+          w.remove();
         });
 
         let icon = li.querySelector('.check-icon');
@@ -756,6 +647,7 @@
           li.insertBefore(icon, li.firstChild);
         } else {
           icon.textContent = '✓';
+          icon.className = 'check-icon';
         }
 
         let textSpan = [...li.querySelectorAll('span')].filter(s => !s.classList.contains('check-icon')).pop();
@@ -768,30 +660,29 @@
         const cleanText = (textSpan.innerText || '').replace(/\u00A0/g, ' ').trim();
         textSpan.textContent = cleanText;
 
-        // limpia cualquier span extra
+        // limpia spans extra
         [...li.querySelectorAll('span')].forEach(sp => {
           if (sp === icon || sp === textSpan) return;
           sp.remove();
         });
 
-        // limpia textos sueltos
+        // limpia textos vacíos sueltos
         [...li.childNodes].forEach(n => {
           if (n.nodeType === 3 && !n.textContent.trim()) n.remove();
         });
 
-        // orden correcto
+        // orden
         if (li.firstElementChild !== icon) li.insertBefore(icon, li.firstChild);
         if (li.lastElementChild !== textSpan) li.appendChild(textSpan);
       });
 
-      // Borra items vacíos extra
+      // borra ítems vacíos extra (pero deja 1 mínimo)
       const lis = [...ul.querySelectorAll('li')];
       lis.forEach(li => {
         const txt = (li.querySelector('span:not(.check-icon)')?.textContent || '').trim();
         if (!txt && lis.length > 1) li.remove();
       });
 
-      // si quedó vacío, deja 1 línea
       if (ul.querySelectorAll('li').length === 0) {
         const li = document.createElement('li');
         li.innerHTML = '<span class="check-icon">✓</span><span>&#8203;</span>';
@@ -817,7 +708,7 @@
           const txtSpan = currentLi.querySelector('span:not(.check-icon)');
           const currentText = (txtSpan?.textContent || '').trim();
 
-          // si el actual está vacío, no crees líneas raras
+          // si está vacío, no metas espacios raros
           if (!currentText) {
             normalizeChecklist(ul);
             return;
