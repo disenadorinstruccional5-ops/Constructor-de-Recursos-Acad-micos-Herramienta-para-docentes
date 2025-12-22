@@ -13,7 +13,7 @@
       color:#000;
       line-height:1.55;
       padding: 16px; /* más pequeño */
-      overflow-x: hidden; /* FIX overflow */
+      overflow-x: hidden; /* evita que se salga horizontal */
     }
 
     .container{ max-width: 980px; margin: 0 auto; } /* más pequeño */
@@ -42,7 +42,7 @@
       transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
       user-select:none;
       white-space:nowrap;
-      min-width: 0; /* FIX flex */
+      min-width:0;
     }
     .toolbar .btn:hover{
       transform: translateY(-1px);
@@ -75,7 +75,8 @@
       justify-content:space-between;
       margin-bottom: 14px; /* más pequeño */
       gap:12px;
-      min-width: 0;
+      min-width:0;
+      flex-wrap:wrap;
     }
 
     .header-main{ min-width:0; }
@@ -85,7 +86,7 @@
       font-size: 28px; /* más pequeño */
       font-weight: 800;
       margin-bottom: 10px;
-      min-width: 0;
+      min-width:0;
     }
 
     .header-badges{
@@ -93,7 +94,7 @@
       align-items:center;
       gap:10px;
       flex-wrap:wrap;
-      min-width: 0;
+      min-width:0;
     }
 
     .badge{
@@ -104,7 +105,7 @@
       backdrop-filter: blur(10px);
       border-radius: 999px;
       padding: 7px 12px; /* más pequeño */
-      min-width: 0;
+      min-width:0;
     }
 
     .badge svg{ width:18px; height:18px; color:#fff; }
@@ -125,7 +126,7 @@
       border: 1px solid rgba(255,255,255,0.30);
       min-width: 190px;
       text-align:center;
-      min-width: 0;
+      min-width:0;
     }
     .tipo-badge div{
       color:#fff;
@@ -159,13 +160,13 @@
       display:flex;
       align-items:center;
       gap:10px;
-      flex-wrap: wrap;
+      flex-wrap:wrap;
       min-width:0;
     }
 
     .duracion-dates input{
       flex:1;
-      min-width: 180px;
+      min-width:180px;
       background: rgba(255,255,255,0.10);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255,255,255,0.20);
@@ -230,7 +231,7 @@
       align-items:flex-start;
       justify-content:space-between;
       gap: 6px;
-      min-width: 0;
+      min-width:0;
     }
 
     .step{
@@ -327,19 +328,8 @@
     .card-icon.pink{ background:#B23858; }
     .card-icon svg{ width:18px; height:18px; color:#fff; }
 
-    .card h3{
-      color:#791632;
-      font-weight:900;
-      font-size: 15px;
-      min-width:0;
-    }
-
-    .card p, .card li{
-      color:#000;
-      line-height: 1.65;
-      font-size: 13px;
-      min-width:0;
-    }
+    .card h3{ color:#791632; font-weight:900; font-size: 15px; min-width:0; }
+    .card p, .card li{ color:#000; line-height: 1.55; font-size: 13px; min-width:0; }
 
     .card.dark{
       background:#791632;
@@ -350,22 +340,7 @@
     .card.dark .card-icon{ background: rgba(255,255,255,.18); }
     .card.dark p, .card.dark li{ color:#fff; }
 
-    .card ul{ list-style:none; padding:0; margin:0; }
-    .card ul li{
-      display:flex;
-      gap:8px;
-      margin-bottom: 8px;
-      font-size: 13px;
-      min-width:0;
-    }
-    .card ul li span:first-child{ color: rgba(255,255,255,.78); }
-
-    .sidebar{
-      display:flex;
-      flex-direction:column;
-      gap: 16px; /* más pequeño */
-      min-width:0; /* FIX */
-    }
+    .sidebar{ display:flex; flex-direction:column; gap: 16px; min-width:0; } /* más pequeño */
 
     .footer-bar{
       height: 7px;
@@ -384,7 +359,7 @@
     }
 
     /* =========================================================
-       FIX DEFINITIVO: no se sale del límite (wrapping agresivo)
+       FIX: contenido no se sale del límite + spacing estático
        ========================================================= */
     .content-grid > * { min-width: 0; }
 
@@ -399,18 +374,65 @@
       overflow-wrap: anywhere !important;
       word-break: break-word !important;
       white-space: pre-wrap;
-      min-width:0;
+      min-width: 0;
     }
 
-    /* Quita márgenes/paddings que a veces mete contenteditable (saltos gigantes) */
+    /* Evita “saltos gigantes / descuadres” que mete contenteditable */
     [contenteditable] *{
       margin: 0 !important;
       padding: 0 !important;
       line-height: 1.55 !important;
     }
 
-    /* Plan B para tokens extremos (aaaaaaaaa, URLs larguísimas) */
+    /* Plan B para tokens extremos */
     .force-break{ word-break: break-all !important; }
+
+    /* =========================================================
+       CHECKLISTS (Logros y Temas): check al inicio y con Enter
+       ========================================================= */
+    .editable-checklist{
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display:flex;
+      flex-direction:column;
+      gap: 8px;
+      line-height: 1.3;
+    }
+
+    .editable-checklist li{
+      display:flex;
+      align-items:flex-start;
+      gap: 8px;
+      margin: 0 !important;
+      padding: 0 !important;
+      line-height: 1.3 !important;
+      min-height: 0;
+      min-width: 0;
+    }
+
+    .check-icon{
+      width: 14px;
+      height: 14px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      flex: 0 0 14px;
+      margin-top: 2px;
+      color: rgba(255,255,255,.85);
+    }
+
+    /* Para checklist en card clara */
+    .card:not(.dark) .check-icon{
+      color: #791632;
+      opacity: .85;
+    }
+
+    .editable-checklist li span:last-child{
+      flex: 1 1 auto;
+      min-width: 0;
+      line-height: 1.3 !important;
+    }
   </style>
 </head>
 
@@ -615,10 +637,11 @@
             <h3 contenteditable="true" class="force-break">Logros Alcanzados</h3>
           </div>
 
-          <ul contenteditable="true" class="force-break">
-            <li><span>✓</span><span>Enumerar 3 logros principales alcanzados durante la semana</span></li>
-            <li><span>✓</span><span>Destacar competencias desarrolladas y conocimientos adquiridos</span></li>
-            <li><span>✓</span><span>Reconocer el cumplimiento de los objetivos propuestos</span></li>
+          <!-- AHORA: checklist con checks y Enter genera nuevo ítem con check -->
+          <ul contenteditable="true" class="editable-checklist force-break" data-checklist="true">
+            <li><span class="check-icon">✓</span><span>Enumerar 3 logros principales alcanzados durante la semana</span></li>
+            <li><span class="check-icon">✓</span><span>Destacar competencias desarrolladas y conocimientos adquiridos</span></li>
+            <li><span class="check-icon">✓</span><span>Reconocer el cumplimiento de los objetivos propuestos</span></li>
           </ul>
         </div>
 
@@ -635,11 +658,12 @@
             <h3 contenteditable="true" style="color:#B23858;" class="force-break">Temas Abordados</h3>
           </div>
 
-          <p contenteditable="true" class="force-break" style="font-size: 13px;">
-            • Resumir los temas principales estudiados durante la semana<br>
-            • Destacar conceptos clave y puntos de mayor relevancia<br>
-            • Vincular con lo que se trabajará en la próxima semana
-          </p>
+          <!-- CAMBIO: pasa de viñetas a checklist (checks) y Enter genera nuevo ítem con check -->
+          <ul contenteditable="true" class="editable-checklist force-break" data-checklist="true" style="font-size:13px;">
+            <li><span class="check-icon">✓</span><span>Resumir los temas principales estudiados durante la semana</span></li>
+            <li><span class="check-icon">✓</span><span>Destacar conceptos clave y puntos de mayor relevancia</span></li>
+            <li><span class="check-icon">✓</span><span>Vincular con lo que se trabajará en la próxima semana</span></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -651,7 +675,12 @@
     function volverAlInicio() {
       const msg = "recuerda que el contenido NO se guarda cuando sales, asegurate de que si terminaste, copiaste el codigo html y lo incertaste en un word";
       const ok = window.confirm(msg);
-      if (ok) window.location.href = "./index.html"; /* GitHub-ready */
+      if (!ok) return;
+
+      // FIX: funciona en GitHub Pages aunque estés en subcarpetas:
+      // navega al directorio actual (donde vive index.html)
+      const base = new URL('.', window.location.href);
+      window.location.href = base.href; // carga ./ (index.html si existe)
     }
 
     function buildExportHTML() {
@@ -675,6 +704,7 @@
 
       return '<!DOCTYPE html>\n' + clone.outerHTML;
     }
+
     async function copiarHTML() {
       const html = buildExportHTML();
       try {
@@ -690,6 +720,124 @@
         alert("Código HTML copiado. Pégalo en Word.");
       }
     }
+
+    function placeCaretIn(el) {
+      const range = document.createRange();
+      const sel = window.getSelection();
+      range.selectNodeContents(el);
+      range.collapse(true);
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }
+
+    function normalizeChecklist(ul) {
+      // Quita <br> sueltos
+      ul.querySelectorAll('br').forEach(br => br.remove());
+
+      // Asegura estructura: [✓][texto]
+      ul.querySelectorAll('li').forEach(li => {
+        // quita nodos raros que mete contenteditable
+        [...li.childNodes].forEach(n => {
+          if (n.nodeType === 1) {
+            const el = n;
+            if (el.tagName === 'DIV' || el.tagName === 'P') {
+              // aplana texto si el navegador metió div/p
+              li.insertAdjacentText('beforeend', ' ' + el.innerText);
+              el.remove();
+            }
+          }
+        });
+
+        let icon = li.querySelector('.check-icon');
+        if (!icon) {
+          icon = document.createElement('span');
+          icon.className = 'check-icon';
+          icon.textContent = '✓';
+          li.insertBefore(icon, li.firstChild);
+        } else {
+          icon.textContent = '✓';
+        }
+
+        let textSpan = [...li.querySelectorAll('span')].filter(s => !s.classList.contains('check-icon')).pop();
+        if (!textSpan) {
+          textSpan = document.createElement('span');
+          textSpan.innerHTML = '&#8203;';
+          li.appendChild(textSpan);
+        }
+
+        const cleanText = (textSpan.innerText || '').replace(/\u00A0/g, ' ').trim();
+        textSpan.textContent = cleanText;
+
+        // limpia cualquier span extra
+        [...li.querySelectorAll('span')].forEach(sp => {
+          if (sp === icon || sp === textSpan) return;
+          sp.remove();
+        });
+
+        // limpia textos sueltos
+        [...li.childNodes].forEach(n => {
+          if (n.nodeType === 3 && !n.textContent.trim()) n.remove();
+        });
+
+        // orden correcto
+        if (li.firstElementChild !== icon) li.insertBefore(icon, li.firstChild);
+        if (li.lastElementChild !== textSpan) li.appendChild(textSpan);
+      });
+
+      // Borra items vacíos extra
+      const lis = [...ul.querySelectorAll('li')];
+      lis.forEach(li => {
+        const txt = (li.querySelector('span:not(.check-icon)')?.textContent || '').trim();
+        if (!txt && lis.length > 1) li.remove();
+      });
+
+      // si quedó vacío, deja 1 línea
+      if (ul.querySelectorAll('li').length === 0) {
+        const li = document.createElement('li');
+        li.innerHTML = '<span class="check-icon">✓</span><span>&#8203;</span>';
+        ul.appendChild(li);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('ul[data-checklist="true"]').forEach(ul => {
+        normalizeChecklist(ul);
+
+        ul.addEventListener('keydown', (e) => {
+          if (e.key !== 'Enter') return;
+          e.preventDefault();
+
+          const sel = window.getSelection();
+          if (!sel || sel.rangeCount === 0) return;
+
+          const node = sel.anchorNode;
+          const currentLi = node?.nodeType === 1 ? node.closest('li') : node?.parentElement?.closest('li');
+          if (!currentLi) return;
+
+          const txtSpan = currentLi.querySelector('span:not(.check-icon)');
+          const currentText = (txtSpan?.textContent || '').trim();
+
+          // si el actual está vacío, no crees líneas raras
+          if (!currentText) {
+            normalizeChecklist(ul);
+            return;
+          }
+
+          const li = document.createElement('li');
+          li.innerHTML = '<span class="check-icon">✓</span><span>&#8203;</span>';
+
+          if (currentLi.nextSibling) ul.insertBefore(li, currentLi.nextSibling);
+          else ul.appendChild(li);
+
+          normalizeChecklist(ul);
+          placeCaretIn(li.querySelector('span:not(.check-icon)'));
+        });
+
+        ul.addEventListener('input', () => normalizeChecklist(ul));
+        ul.addEventListener('paste', () => setTimeout(() => normalizeChecklist(ul), 0));
+        ul.addEventListener('blur', () => normalizeChecklist(ul), true);
+      });
+    });
   </script>
 </body>
 </html>
